@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="theme-color" content="#17466b">
-<title>ADPHC × Eagle | IT Checklist</title>
+<title>ADPHC × Eagle | IT Checklist – Updated</title>
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
 <style>
 :root{--blue:#17466b;--blue2:#28658e;--teal:#078e98;--green:#25865a;--ink:#243746;--muted:#657785;--line:#dbe4e9;--bg:#f3f6f8;--soft:#edf4f7;--white:#fff}
@@ -57,7 +57,7 @@ textarea{min-height:68px;resize:vertical}
 .step-nav .btn:disabled{opacity:.45;cursor:not-allowed}
 @media(max-width:600px){.step-nav .btn{flex:1;min-width:0;padding:13px 10px}}
 body{padding-bottom:84px}
-#inspectionMap{height:300px;width:100%;border:1px solid var(--line);border-radius:10px;z-index:1}
+#inspectionMap{height:300px;width:100%;border:1px solid var(--line);border-radius:10px;z-index:1;contain:layout paint}#inspectionMap.map-collapsed{height:0!important;min-height:0!important;border:0;overflow:hidden}#inspectionMap.map-expanded{height:min(68vh,620px)}.map-tools{display:flex;gap:8px;flex-wrap:wrap;margin:8px 0}
 .review-panel{background:#fff;border:1px solid var(--line);border-radius:13px;padding:16px;margin:14px 0;box-shadow:0 2px 8px #18384b08}
 .review-panel h3{color:var(--blue);margin:0 0 8px}
 .review-missing{margin:10px 0;padding-left:20px}
@@ -95,6 +95,7 @@ body{padding-bottom:84px}
   <div class="grid">
    <div><label for="tlName">Name of Team Leader</label><input id="tlName" placeholder="Team leader name"></div>
    <div><label for="tlMobile">Mobile Number of TL</label><input id="tlMobile" type="tel" inputmode="tel" placeholder="+971 5X XXX XXXX"></div>
+   <div><label for="teamService">Team Service (Team Leader only)</label><input id="teamService" placeholder="Enter team service"></div>
   </div>
   <div class="rowline no-print" style="margin-top:12px"><span class="small">Sub-team leader is optional.</span><button class="btn btn-light" id="toggleSub" type="button">＋ Add Sub Team Leader</button></div>
   <div id="subTeam" class="grid hidden" style="margin-top:13px">
@@ -112,6 +113,8 @@ body{padding-bottom:84px}
     <div><label for="tlStatus">Mobile condition</label><select id="tlStatus"><option value="">Select status</option><option>Good</option><option>Not Good</option><option>Need Replacement</option><option>Broken</option></select></div>
     <div><label>Has access in mobile system?</label><div class="choices" data-group="tlAccess"><label class="choice"><input type="radio" name="tlAccess" value="Yes"><span>Yes</span></label><label class="choice"><input type="radio" name="tlAccess" value="No"><span>No</span></label></div></div>
    </div>
+   <div style="margin-top:12px"><label>Is mobile using only for company?</label><div class="choices"><label class="choice"><input type="radio" name="tlCompanyOnly" value="Yes"><span>Yes</span></label><label class="choice"><input type="radio" name="tlCompanyOnly" value="No"><span>No</span></label></div><div class="note-box"><label for="tlCompanyOnlyNotes">Notes (optional)</label><textarea id="tlCompanyOnlyNotes" placeholder="Optional notes..."></textarea></div></div>
+   <div style="margin-top:10px"><label for="tlDataRemaining">How Many Internet Data Remaining?</label><input id="tlDataRemaining" type="text" placeholder="e.g. 2 GB / 500 MB"></div>
    <div class="rowline no-print note-action"><span class="small">Notes are optional.</span><button class="btn btn-light note-toggle" data-target="tlMobileNotes" type="button">＋ Add notes</button></div>
    <div id="tlMobileNotes" class="note-box hidden"><label for="tlMobileNoteText">Mobile status / access notes</label><textarea id="tlMobileNoteText" placeholder="Enter notes..."></textarea></div>
    <div id="tlAccessNotes" class="note-box hidden"><label for="tlAccessNoteText">Mobile access notes</label><textarea id="tlAccessNoteText" placeholder="Enter access notes..."></textarea></div>
@@ -123,6 +126,8 @@ body{padding-bottom:84px}
     <div><label for="stlStatus">Mobile condition</label><select id="stlStatus"><option value="">Select status</option><option>Good</option><option>Not Good</option><option>Need Replacement</option><option>Broken</option></select></div>
     <div><label>Has access in mobile system?</label><div class="choices"><label class="choice"><input type="radio" name="stlAccess" value="Yes"><span>Yes</span></label><label class="choice"><input type="radio" name="stlAccess" value="No"><span>No</span></label></div></div>
    </div>
+   <div style="margin-top:12px"><label>Is mobile using only for company?</label><div class="choices"><label class="choice"><input type="radio" name="stlCompanyOnly" value="Yes"><span>Yes</span></label><label class="choice"><input type="radio" name="stlCompanyOnly" value="No"><span>No</span></label></div><div class="note-box"><label for="stlCompanyOnlyNotes">Notes (optional)</label><textarea id="stlCompanyOnlyNotes" placeholder="Optional notes..."></textarea></div></div>
+   <div style="margin-top:10px"><label for="stlDataRemaining">How Many Internet Data Remaining?</label><input id="stlDataRemaining" type="text" placeholder="e.g. 2 GB / 500 MB"></div>
    <div class="rowline no-print note-action"><span class="small">Notes are optional.</span><button class="btn btn-light note-toggle" data-target="stlMobileNotes" type="button">＋ Add notes</button></div>
    <div id="stlMobileNotes" class="note-box hidden"><label for="stlMobileNoteText">Mobile status notes</label><textarea id="stlMobileNoteText" placeholder="Enter notes..."></textarea></div>
    <div id="stlAccessNotes" class="note-box hidden"><label for="stlAccessNoteText">Mobile access notes</label><textarea id="stlAccessNoteText" placeholder="Enter access notes..."></textarea></div>
@@ -142,7 +147,10 @@ body{padding-bottom:84px}
   <div class="status-block" style="margin-top:14px">
    <h3>Current Location of Inspection</h3>
    <button class="btn btn-teal no-print" id="getInspectionLocation" type="button">⌖ Get Current Location</button>
-   <div style="margin-top:10px"><label>Map – drag the pin to adjust the inspection location</label><div id="inspectionMap" aria-label="Interactive inspection location map"></div></div>
+   <div style="margin-top:10px"><div class="rowline"><label>Map – drag the pin to adjust the inspection location</label><div class="map-tools no-print"><button class="btn btn-light" id="toggleMapView" type="button">Collapse Map</button><button class="btn btn-light" id="expandMapView" type="button">Expand Map</button></div></div><div id="inspectionMap" aria-label="Interactive inspection location map"></div><div class="small">Use the map layer control to switch between standard map and satellite imagery.</div></div>
+   <div class="grid" style="margin-top:12px">
+    <div><label for="technicianCount">How Many Technicians Including the Sub Team Leader?</label><input id="technicianCount" type="number" min="0" step="1" inputmode="numeric" placeholder="Enter number"><label for="technicianCountNotes" style="margin-top:7px">Notes (optional)</label><textarea id="technicianCountNotes" placeholder="Optional notes..."></textarea></div>
+   </div>
    <div class="grid" style="margin-top:10px">
     <div><label for="inspectionLocation">Selected address / location</label><input id="inspectionLocation" readonly placeholder="Get current location or move the map pin"></div>
     <div><label for="inspectionCoordinates">GPS coordinates</label><input id="inspectionCoordinates" readonly placeholder="Latitude, longitude"></div>
@@ -195,8 +203,8 @@ body{padding-bottom:84px}
  <div class="section-body">
   <h3 style="margin:0 0 8px;color:var(--blue)">Signatures</h3>
   <div class="grid signature-grid">
-   <div class="status-block"><label>Team Leader Signature</label><canvas id="tlSignature" class="signature-pad" aria-label="Team Leader signature pad"></canvas><button class="btn btn-light no-print clear-signature" data-canvas="tlSignature" type="button">Clear Signature</button></div>
-   <div class="status-block"><label>Inspector Signature</label><canvas id="inspectorSignature" class="signature-pad" aria-label="Inspector signature pad"></canvas><button class="btn btn-light no-print clear-signature" data-canvas="inspectorSignature" type="button">Clear Signature</button></div>
+   <div class="status-block"><label id="tlSignatureLabel">Team Leader Signature</label><canvas id="tlSignature" class="signature-pad" aria-label="Team Leader signature pad"></canvas><button class="btn btn-light no-print clear-signature" data-canvas="tlSignature" type="button">Clear Signature</button></div>
+   <div class="status-block"><label id="inspectorSignatureLabel">Inspector Signature</label><canvas id="inspectorSignature" class="signature-pad" aria-label="Inspector signature pad"></canvas><button class="btn btn-light no-print clear-signature" data-canvas="inspectorSignature" type="button">Clear Signature</button></div>
   </div>
   <div class="small">Sign using your finger on a phone or mouse on a computer.</div>
   <div class="actions no-print hidden" id="finalShareActions" style="margin-top:16px">
@@ -269,7 +277,9 @@ const systemList=[
 "How to edit / remove barcode or inspection",
 "How to check Inspection Map",
 "How to close work orders",
-"Previous work order checked"
+"Previous work order checked",
+"Has extra barcode?",
+"Given New training?"
 ];
 const gpsList=[
 "GPS web details same with vehicle user",
@@ -392,11 +402,17 @@ async function updateInspectionLocation(lat,lon,stamp=new Date(),statusText='Loc
 }
 function initInspectionMap(){
  const el=document.getElementById('inspectionMap');if(!el||!window.L){document.getElementById('inspectionLocationStatus').textContent='Interactive map could not load. Check internet access; GPS coordinates can still be captured.';return;}
- inspectionMap=L.map(el).setView([24.4539,54.3773],10);
- L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{maxZoom:19,attribution:'© OpenStreetMap'}).addTo(inspectionMap);
+ inspectionMap=L.map(el,{preferCanvas:true,zoomControl:true,fadeAnimation:false,markerZoomAnimation:false}).setView([24.4539,54.3773],10);
+ const standard=L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{maxZoom:19,keepBuffer:2,updateWhenIdle:true,attribution:'© OpenStreetMap'});
+ const satellite=L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}',{maxZoom:19,keepBuffer:2,updateWhenIdle:true,attribution:'Tiles © Esri'});
+ standard.addTo(inspectionMap);
+ L.control.layers({'Standard Map':standard,'Satellite':satellite},null,{collapsed:true,position:'topright'}).addTo(inspectionMap);
  inspectionMap.on('click',e=>{setInspectionPin(e.latlng.lat,e.latlng.lng,new Date(),'Map location selected');});
- setTimeout(()=>inspectionMap.invalidateSize(),250);
+ requestAnimationFrame(()=>inspectionMap.invalidateSize({pan:false}));
 }
+document.getElementById('toggleMapView').addEventListener('click',()=>{const mapEl=document.getElementById('inspectionMap');const collapsed=mapEl.classList.toggle('map-collapsed');mapEl.classList.remove('map-expanded');document.getElementById('toggleMapView').textContent=collapsed?'Show Map':'Collapse Map';setTimeout(()=>inspectionMap?.invalidateSize({pan:false}),80);});
+document.getElementById('expandMapView').addEventListener('click',()=>{const mapEl=document.getElementById('inspectionMap');mapEl.classList.remove('map-collapsed');mapEl.classList.toggle('map-expanded');document.getElementById('toggleMapView').textContent='Collapse Map';setTimeout(()=>inspectionMap?.invalidateSize({pan:false}),80);});
+
 document.getElementById('getInspectionLocation').addEventListener('click',()=>{
  const status=document.getElementById('inspectionLocationStatus');if(!window.isSecureContext||!navigator.geolocation){status.textContent='Location requires HTTPS (or localhost) and browser geolocation support.';return;}
  status.textContent='Requesting current device location…';navigator.geolocation.getCurrentPosition(pos=>{setInspectionPin(pos.coords.latitude,pos.coords.longitude,new Date(),'Current device location detected');},err=>{status.textContent=err.code===1?'Location permission denied. Allow location access and try again.':'Could not get current location. Check Location services and try again.';},{enableHighAccuracy:true,timeout:25000,maximumAge:0});
@@ -423,25 +439,34 @@ function value(id){return document.getElementById(id)?.value?.trim()||'—'}
 function questionData(id,items){
  return items.map((q,i)=>({q,a:selected(id+'_'+i),n:value(id+'_'+i+'_notes_text')}));
 }
+function updateSignatureLabels(){
+ const tl=document.getElementById('tlName')?.value.trim()||'Team Leader';
+ const inspector=document.getElementById('inspectorName')?.value.trim()||'Inspector';
+ document.getElementById('tlSignatureLabel').textContent=`Team Leader Signature – ${tl}`;
+ document.getElementById('inspectorSignatureLabel').textContent=`Inspector Signature – ${inspector}`;
+}
+document.getElementById('tlName').addEventListener('input',updateSignatureLabels);
+document.getElementById('inspectorName').addEventListener('input',updateSignatureLabels);
+updateSignatureLabels();
 function reportData(){
  const hasSub=!document.getElementById('subTeam').classList.contains('hidden');
  const sys=questionData('systemQuestions',systemList),gps=questionData('gpsQuestions',gpsList);
  const plan={q:'Same plan and location?',a:selected('plan'),n:value('planNoteText')};
  const mobile=[
-  {name:'Team Leader Mobile',status:value('tlStatus'),access:selected('tlAccess'),notes:value('tlMobileNoteText'),accessNotes:value('tlAccessNoteText')}
+  {name:'Team Leader Mobile',status:value('tlStatus'),access:selected('tlAccess'),notes:value('tlMobileNoteText'),accessNotes:value('tlAccessNoteText'),companyOnly:selected('tlCompanyOnly'),companyNotes:value('tlCompanyOnlyNotes'),dataRemaining:value('tlDataRemaining')}
  ];
- if(hasSub)mobile.push({name:'Sub Team Leader Mobile',status:value('stlStatus'),access:selected('stlAccess'),notes:value('stlMobileNoteText'),accessNotes:value('stlAccessNoteText')});
- return {inspector:value('inspectorName'),department:value('department'),tl:value('tlName'),tlMobile:value('tlMobile'),hasSub,stl:value('stlName'),stlMobile:value('stlMobile'),mobile,plan,sys,gps,total:value('totalNotes'),concern:value('teamConcern'),location:value('inspectionLocation')!=='—'?value('inspectionLocation'):value('photoLocation'),geo:inspectionGeo,generated:new Date(),tlSignature:signatureData.tlSignature(),inspectorSignature:signatureData.inspectorSignature()};
+ if(hasSub)mobile.push({name:'Sub Team Leader Mobile',status:value('stlStatus'),access:selected('stlAccess'),notes:value('stlMobileNoteText'),accessNotes:value('stlAccessNoteText'),companyOnly:selected('stlCompanyOnly'),companyNotes:value('stlCompanyOnlyNotes'),dataRemaining:value('stlDataRemaining')});
+ return {inspector:value('inspectorName'),department:value('department'),tl:value('tlName'),tlMobile:value('tlMobile'),teamService:value('teamService'),hasSub,stl:value('stlName'),stlMobile:value('stlMobile'),mobile,technicianCount:value('technicianCount'),technicianNotes:value('technicianCountNotes'),plan,sys,gps,total:value('totalNotes'),concern:value('teamConcern'),location:value('inspectionLocation')!=='—'?value('inspectionLocation'):value('photoLocation'),geo:inspectionGeo,generated:new Date(),tlSignature:signatureData.tlSignature(),inspectorSignature:signatureData.inspectorSignature()};
 }
 function reportText(d=reportData()){
- const lines=['ADPHC × EAGLE ENVIRONMENTAL SERVICES & PEST CONTROL','IT CHECKLIST INSPECTION','',`Inspector: ${d.inspector}`,`Department: ${d.department}`,`Team Leader: ${d.tl}`,`TL Mobile: ${d.tlMobile}`];
+ const lines=['ADPHC × EAGLE ENVIRONMENTAL SERVICES & PEST CONTROL','IT CHECKLIST INSPECTION','',`Inspector: ${d.inspector}`,`Department: ${d.department}`,`Team Leader: ${d.tl}`,`TL Mobile: ${d.tlMobile}`,`Team Service: ${d.teamService}`];
  if(d.hasSub)lines.push(`Sub Team Leader: ${d.stl}`,`STL Mobile: ${d.stlMobile}`);
  lines.push('', 'MOBILE STATUS');
- d.mobile.forEach(m=>lines.push(`${m.name}: ${m.status}; Has access: ${m.access}`,`Notes: ${m.notes}`,`Access notes: ${m.accessNotes}`));
- lines.push('', 'LOCATION OF INSPECTION VS. PLAN',`${d.plan.q}: ${d.plan.a}`,`Notes: ${d.plan.n}`,`Current location: ${d.location}`,`Coordinates: ${d.geo?d.geo.lat.toFixed(6)+', '+d.geo.lon.toFixed(6):'Not captured'}`,`Location date/time: ${d.geo?d.geo.timestamp.toLocaleString():'Not captured'}`,'','SYSTEM ACCESS');
+ d.mobile.forEach(m=>lines.push(`${m.name}: ${m.status}; Has access: ${m.access}`,`Company-only use: ${m.companyOnly}`,`Company-use notes: ${m.companyNotes}`,`Internet data remaining: ${m.dataRemaining}`,`Notes: ${m.notes}`,`Access notes: ${m.accessNotes}`));
+ lines.push('', 'LOCATION OF INSPECTION VS. PLAN',`${d.plan.q}: ${d.plan.a}`,`Notes: ${d.plan.n}`,`Technician count including Sub Team Leader: ${d.technicianCount}`,`Technician count notes: ${d.technicianNotes}`,`Current location: ${d.location}`,`Coordinates: ${d.geo?d.geo.lat.toFixed(6)+', '+d.geo.lon.toFixed(6):'Not captured'}`,`Location date/time: ${d.geo?d.geo.timestamp.toLocaleString():'Not captured'}`,'','SYSTEM ACCESS');
  d.sys.forEach((x,i)=>lines.push(`${i+1}. ${x.q}: ${x.a}`,`Notes: ${x.n}`));
  lines.push('','GPS');d.gps.forEach((x,i)=>lines.push(`${i+1}. ${x.q}: ${x.a}`,`Notes: ${x.n}`));
- lines.push('','TOTAL OBSERVATION NOTES',d.total,'','TEAM CONCERN OR SUGGESTION',d.concern,'','PHOTOS',`${photos.length} image(s) attached`,'','SIGNATURES',`Team Leader: ${d.tlSignature?'Signed':'Not signed'}`,`Inspector: ${d.inspectorSignature?'Signed':'Not signed'}`,'',`Generated: ${d.generated.toLocaleString()}`);
+ lines.push('','TOTAL OBSERVATION NOTES',d.total,'','TEAM CONCERN OR SUGGESTION',d.concern,'','PHOTOS',`${photos.length} image(s) attached`,'','SIGNATURES',`Team Leader (${d.tl}): ${d.tlSignature?'Signed':'Not signed'}`,`Inspector (${d.inspector}): ${d.inspectorSignature?'Signed':'Not signed'}`,'',`Generated: ${d.generated.toLocaleString()}`);
  return lines.join('\n');
 }
 function loadImage(src){return new Promise((res,rej)=>{const im=new Image();im.onload=()=>res(im);im.onerror=rej;im.src=src;});}
@@ -524,6 +549,7 @@ async function createPdf(){
  y=sectionTitle(doc,'02  TEAM DETAILS',y);
  y=pdfLabelValue(doc,'Team Leader Name',d.tl,y);
  y=pdfLabelValue(doc,'Team Leader Mobile',d.tlMobile,y);
+ y=pdfLabelValue(doc,'Team Service',d.teamService,y);
  if(d.hasSub){y=pdfLabelValue(doc,'Sub Team Leader Name',d.stl,y);y=pdfLabelValue(doc,'Sub Team Leader Mobile',d.stlMobile,y);}y+=7;
 
  y=sectionTitle(doc,'03  MOBILE STATUS',y);
@@ -533,12 +559,16 @@ async function createPdf(){
   y=addWrapped(doc,`Condition: ${m.status||'—'}   |   Has access in mobile system: ${m.access||'—'}`,left+17,y,right-left-25,12);
   if(m.notes&&m.notes!=='—')y=addWrapped(doc,`Condition notes: ${m.notes}`,left+17,y,right-left-25,12);
   if(m.accessNotes&&m.accessNotes!=='—')y=addWrapped(doc,`Access notes: ${m.accessNotes}`,left+17,y,right-left-25,12);
+  y=addWrapped(doc,`Mobile for company use only: ${m.companyOnly||'—'} | Internet data remaining: ${m.dataRemaining||'—'}`,left+17,y,right-left-25,12);
+  if(m.companyNotes&&m.companyNotes!=='—')y=addWrapped(doc,`Company-use notes: ${m.companyNotes}`,left+17,y,right-left-25,12);
   y+=6;
  });y+=3;
 
  y=sectionTitle(doc,'04  LOCATION OF INSPECTION VS. PLAN',y);
  y=addWrapped(doc,`Same plan and location?  ${d.plan.a||'—'}`,left+7,y,right-left-14,13);
  if(d.plan.n&&d.plan.n!=='—')y=addWrapped(doc,`Notes: ${d.plan.n}`,left+7,y,right-left-14,13);
+ y=addWrapped(doc,`Technicians including Sub Team Leader: ${d.technicianCount||'—'}`,left+7,y,right-left-14,13);
+ if(d.technicianNotes&&d.technicianNotes!=='—')y=addWrapped(doc,`Technician count notes: ${d.technicianNotes}`,left+7,y,right-left-14,13);
  y=addWrapped(doc,`Current location: ${d.location||'Not captured'}`,left+7,y,right-left-14,13);
  if(d.geo){y=addWrapped(doc,`Coordinates: ${d.geo.lat.toFixed(6)}, ${d.geo.lon.toFixed(6)}`,left+7,y,right-left-14,13);y=addWrapped(doc,`Location date/time: ${d.geo.timestamp.toLocaleString()}`,left+7,y,right-left-14,13);}y+=8;
 
@@ -560,7 +590,7 @@ async function createPdf(){
  y=sectionTitle(doc,'08  TEAM CONCERN OR SUGGESTION (OPTIONAL)',y);
  y=addWrapped(doc,d.concern&&d.concern!=='—'?d.concern:'None provided.',left+7,y,right-left-14,13);y+=8;
  y=sectionTitle(doc,'09  SIGNATURES',y);
- for(const [label,data] of [['Team Leader',d.tlSignature],['Inspector',d.inspectorSignature]]){
+ for(const [label,data] of [[`Team Leader – ${d.tl}`,d.tlSignature],[`Inspector – ${d.inspector}`,d.inspectorSignature]]){
   y=pdfEnsure(doc,y,76);doc.setFont('helvetica','bold');doc.setFontSize(9);doc.text(label+':',left+7,y);
   if(data){doc.addImage(data,'PNG',left+125,y-23,155,48);}else{doc.setFont('helvetica','normal');doc.text('Not signed',left+125,y);}
   y+=60;
