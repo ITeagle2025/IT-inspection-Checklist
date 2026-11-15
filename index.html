@@ -66,6 +66,19 @@ body{padding-bottom:84px}
 @media print{.step-hidden{display:block!important}.step-progress,.step-nav{display:none!important}}
 @media(max-width:600px){.brand img{max-height:45px}.brand-title h1{font-size:19px}.grid{grid-template-columns:1fr}.photo-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.section-body{padding:13px}.actions{grid-template-columns:1fr}}
 @media print{body{background:white}.no-print{display:none!important}.section{box-shadow:none;break-inside:avoid;margin-bottom:8px}.section-head{background:#edf4f7!important;-webkit-print-color-adjust:exact;print-color-adjust:exact}main{margin:0 auto;padding:8px}.brand{padding:0}.brand img{max-height:43px}}
+
+.detail-split{display:grid;grid-template-columns:1fr 1px 1fr;gap:14px;align-items:start}
+.detail-panel h3{font-size:13px;color:var(--blue);margin:0 0 9px;padding-bottom:6px;border-bottom:1px solid var(--line)}
+.detail-divider{align-self:stretch;background:var(--line);min-height:100%}
+.detail-panel .grid{gap:9px}
+.detail-panel input{padding:8px 9px;font-size:13px}
+.section{border-radius:10px;margin-bottom:10px}
+.section-head{padding:10px 13px}
+.section-body{padding:12px 13px}
+.item{padding:9px 0}
+.status-block{padding:10px;margin-bottom:8px}
+@media(max-width:650px){.detail-split{grid-template-columns:1fr;gap:10px}.detail-divider{height:1px;min-height:1px;width:100%}}
+.section{border-radius:10px;margin-bottom:10px}.section-head{padding:10px 13px}.section-body{padding:12px 13px}.item{padding:9px 0}.status-block{padding:10px;margin-bottom:8px}
 </style>
 </head>
 <body>
@@ -80,22 +93,24 @@ body{padding-bottom:84px}
   <p>ADPHC × Eagle Environmental Services &amp; Pest Control · Field Inspection Record</p>
  </div>
 </header>
-<div class="step-progress no-print" aria-live="polite"><div class="step-progress-track"><div class="step-progress-fill" id="stepProgressFill"></div></div><div class="step-progress-meta"><span id="stepProgressLabel">Section 1 of 9</span><span id="stepProgressTitle">Inspector Details</span></div></div>
+<div class="step-progress no-print" aria-live="polite"><div class="step-progress-track"><div class="step-progress-fill" id="stepProgressFill"></div></div><div class="step-progress-meta"><span id="stepProgressLabel">Section 1 of 8</span><span id="stepProgressTitle">Inspector Details</span></div></div>
 <main>
 <section class="section">
  <div class="section-head"><span class="section-no">01</span><h2>Inspector Details</h2></div>
  <div class="section-body grid">
   <div><label for="inspectorName">Name</label><input id="inspectorName" required placeholder="Inspector full name"></div>
-  <div><label for="department">Department</label><input id="department" required placeholder="Department"></div>
+  <div><label for="department">Department</label><input id="department" list="departmentOptions" required placeholder="Search or select department"><datalist id="departmentOptions"><option value="IT Department"></option><option value="Admin/HR Department"></option><option value="Contract Department"></option><option value="Operation Department"></option><option value="Workshop Department"></option><option value="QA/Safety Department"></option></datalist></div>
  </div>
 </section>
 <section class="section">
  <div class="section-head"><span class="section-no">02</span><h2>Team Details</h2></div>
  <div class="section-body">
   <div class="grid">
-   <div><label for="tlName">Name of Team Leader</label><input id="tlName" placeholder="Team leader name"></div>
-   <div><label for="tlMobile">Mobile Number of TL</label><input id="tlMobile" type="tel" inputmode="tel" placeholder="+971 5X XXX XXXX"></div>
-   <div><label for="teamService">Team Service (Team Leader only)</label><input id="teamService" placeholder="Enter team service"></div>
+   <div><label for="tlName">Name of Team Leader</label><input id="tlName" required placeholder="Team leader name"></div>
+   <div><label for="tlMobile">Mobile Number of TL</label><input id="tlMobile" type="tel" inputmode="tel" required placeholder="+971 5X XXX XXXX"></div>
+   <div><label for="teamService">Service or Area &amp; Team</label><input id="teamService" list="teamServiceOptions" required placeholder="Search or select service / area and team"><datalist id="teamServiceOptions"><option value="A1-T1 City Services Mosquito Control"></option><option value="A1-T2 City Services Mosquito Control"></option><option value="A1-T3 City Services Mosquito Control"></option><option value="A1-T4 City Services Flies Control (Simco Sprayer)"></option><option value="A1-T5 City Services Rodent &amp; Cockroach Control"></option><option value="A1-T6 City Services Rodent &amp; Cockroach Control"></option><option value="A1-T7 Palaces &amp; VIP Villas &amp; Government"></option><option value="A1-T8 Space Treatment ULV &amp; Fogging 3 in 1"></option><option value="A2-T10 Unscheduled Services"></option><option value="A2-T11 Unscheduled Services"></option><option value="A2-T12 Unscheduled Services"></option><option value="A2-T13 Unscheduled Services"></option><option value="A2-T14 City Services Mosquito Control"></option><option value="A2-T15 City Services Mosquito Control"></option><option value="A2-T16 City Services Mosquito Control"></option><option value="A2-T17 City Services Aedes Aeypti Control"></option><option value="A2-T18 City Services Flies Control"></option><option value="A2-T20 City Services Cockroach Control"></option><option value="A2-T21 City Services Cockroach Control"></option><option value="A2-T22 City Services Rodent Control"></option><option value="A2-T23 City Services Rodent Control"></option><option value="A2-T24 City Services Rodent Control"></option><option value="A2-T25 Palaces &amp; VIP Villas &amp; Government"></option><option value="A2-T9 Unscheduled Services"></option><option value="A3-T26 Unscheduled Services"></option><option value="A3-T27 Unscheduled Services"></option><option value="A3-T28 Unscheduled Services"></option><option value="A3-T29 Unscheduled Services"></option><option value="A3-T30 Unscheduled Services"></option><option value="A3-T31 Unscheduled Services"></option><option value="A3-T32 Unscheduled Services"></option><option value="A3-T33 City Services Mosquito Control"></option><option value="A3-T34 City Services Mosquito Control"></option><option value="A3-T35 City Services Aedes Aeypti Control"></option><option value="A3-T36 City Services Flies Control"></option><option value="A3-T37 City Services Flies Control"></option><option value="A3-T38 City Services Rodent Control"></option><option value="A3-T39 City Services Rodent Control"></option><option value="A3-T40 City Services Rodent Control"></option><option value="A3-T41 City Services Cockroach Control"></option><option value="A3-T42 City Services Cockroach Control"></option><option value="A3-T43 Palaces &amp; VIP Villas &amp; Government"></option><option value="A3-T44 Space Treatment ULV &amp; Fogging 3 in 1"></option><option value="A4-T45 Unscheduled Services"></option><option value="A4-T46 Unscheduled Services"></option><option value="A4-T47 Unscheduled Services"></option><option value="A4-T48 Unscheduled Services"></option><option value="A4-T49 Unscheduled Services"></option><option value="A4-T50 City Services Mosquito Control"></option><option value="A4-T51 City Services Mosquito Control"></option><option value="A4-T52 City Services Aedes Aeypti Control"></option><option value="A4-T53 City Services Flies Control"></option><option value="A4-T54 City Services Flies Control"></option><option value="A4-T55 City Services Flies Control (Simco Sprayer)"></option><option value="A4-T56 City Services Rodent Control"></option><option value="A4-T57 City Services Rodent Control"></option><option value="A4-T58 City Services Rodent Control"></option><option value="A4-T59 City Services Cockroach Control"></option><option value="A4-T60 City Services Cockroach Control"></option><option value="A4-T61 Palaces &amp; VIP Villas &amp; Government"></option><option value="A5-T62 Unscheduled Services"></option><option value="A5-T63 City Services Mosquito Control"></option><option value="A5-T64 City Services Mosquito Control"></option><option value="A5-T65 City Services Mosquito Control"></option><option value="A5-T66 City Services Flies Control (Simco Sprayer)"></option><option value="A5-T67 City Services Rodent &amp; Cockroach Control"></option><option value="A5-T68 City Services Rodent &amp; Cockroach Control"></option><option value="A5-T69 Farm Services"></option><option value="A5-T70 Farm Services"></option><option value="A5-T71 Farm Services"></option><option value="A5-T72 Ezab Services"></option><option value="A5-T73 Palaces &amp; VIP Villas &amp; Government"></option><option value="A5-T74 Space Treatment ULV &amp; Fogging 3 in 1"></option><option value="S1 Flies, Rodent &amp; Cockoraches"></option><option value="S2 Flies, Rodent &amp; Cockoraches"></option><option value="S3 Flies, Rodent &amp; Cockoraches"></option><option value="S4 Mosquito Survey"></option><option value="S5 Mosquito Survey"></option><option value="S6 Mosquito Survey"></option><option value="S7 Smart trap"></option><option value="S8 Smart trap"></option></datalist></div>
+   <div><label for="vehiclePlate">Vehicle Plate Number</label><input id="vehiclePlate" required placeholder="Enter vehicle plate number"></div>
+   <div><label for="technicianCount">Technicians including Sub Team Leader</label><input id="technicianCount" type="number" min="0" step="1" required placeholder="Enter number"></div>
   </div>
   <div class="rowline no-print" style="margin-top:12px"><span class="small">Sub-team leader is optional.</span><button class="btn btn-light" id="toggleSub" type="button">＋ Add Sub Team Leader</button></div>
   <div id="subTeam" class="grid hidden" style="margin-top:13px">
@@ -114,7 +129,7 @@ body{padding-bottom:84px}
     <div><label>Has access in mobile system?</label><div class="choices" data-group="tlAccess"><label class="choice"><input type="radio" name="tlAccess" value="Yes"><span>Yes</span></label><label class="choice"><input type="radio" name="tlAccess" value="No"><span>No</span></label></div></div>
    </div>
    <div style="margin-top:12px"><label>Is mobile using only for company?</label><div class="choices"><label class="choice"><input type="radio" name="tlCompanyOnly" value="Yes"><span>Yes</span></label><label class="choice"><input type="radio" name="tlCompanyOnly" value="No"><span>No</span></label></div><div class="note-box"><label for="tlCompanyOnlyNotes">Notes (optional)</label><textarea id="tlCompanyOnlyNotes" placeholder="Optional notes..."></textarea></div></div>
-   <div style="margin-top:10px"><label for="tlDataRemaining">How Many Internet Data Remaining?</label><input id="tlDataRemaining" type="text" placeholder="e.g. 2 GB / 500 MB"></div>
+   <div style="margin-top:10px"><label for="tlDataRemaining">How Many Internet Data Remaining?</label><div class="rowline" style="gap:8px"><input id="tlDataRemaining" type="number" min="0" step="0.01" inputmode="decimal" placeholder="Enter remaining data" style="flex:1"><select id="tlDataRemainingUnit" aria-label="Data unit" style="max-width:100px"><option value="GB">GB</option><option value="MB">MB</option></select></div></div>
    <div class="rowline no-print note-action"><span class="small">Notes are optional.</span><button class="btn btn-light note-toggle" data-target="tlMobileNotes" type="button">＋ Add notes</button></div>
    <div id="tlMobileNotes" class="note-box hidden"><label for="tlMobileNoteText">Mobile status / access notes</label><textarea id="tlMobileNoteText" placeholder="Enter notes..."></textarea></div>
    <div id="tlAccessNotes" class="note-box hidden"><label for="tlAccessNoteText">Mobile access notes</label><textarea id="tlAccessNoteText" placeholder="Enter access notes..."></textarea></div>
@@ -127,7 +142,7 @@ body{padding-bottom:84px}
     <div><label>Has access in mobile system?</label><div class="choices"><label class="choice"><input type="radio" name="stlAccess" value="Yes"><span>Yes</span></label><label class="choice"><input type="radio" name="stlAccess" value="No"><span>No</span></label></div></div>
    </div>
    <div style="margin-top:12px"><label>Is mobile using only for company?</label><div class="choices"><label class="choice"><input type="radio" name="stlCompanyOnly" value="Yes"><span>Yes</span></label><label class="choice"><input type="radio" name="stlCompanyOnly" value="No"><span>No</span></label></div><div class="note-box"><label for="stlCompanyOnlyNotes">Notes (optional)</label><textarea id="stlCompanyOnlyNotes" placeholder="Optional notes..."></textarea></div></div>
-   <div style="margin-top:10px"><label for="stlDataRemaining">How Many Internet Data Remaining?</label><input id="stlDataRemaining" type="text" placeholder="e.g. 2 GB / 500 MB"></div>
+   <div style="margin-top:10px"><label for="stlDataRemaining">How Many Internet Data Remaining?</label><div class="rowline" style="gap:8px"><input id="stlDataRemaining" type="number" min="0" step="0.01" inputmode="decimal" placeholder="Enter remaining data" style="flex:1"><select id="stlDataRemainingUnit" aria-label="Data unit" style="max-width:100px"><option value="GB">GB</option><option value="MB">MB</option></select></div></div>
    <div class="rowline no-print note-action"><span class="small">Notes are optional.</span><button class="btn btn-light note-toggle" data-target="stlMobileNotes" type="button">＋ Add notes</button></div>
    <div id="stlMobileNotes" class="note-box hidden"><label for="stlMobileNoteText">Mobile status notes</label><textarea id="stlMobileNoteText" placeholder="Enter notes..."></textarea></div>
    <div id="stlAccessNotes" class="note-box hidden"><label for="stlAccessNoteText">Mobile access notes</label><textarea id="stlAccessNoteText" placeholder="Enter access notes..."></textarea></div>
@@ -146,17 +161,14 @@ body{padding-bottom:84px}
   </div>
   <div class="status-block" style="margin-top:14px">
    <h3>Current Location of Inspection</h3>
-   <button class="btn btn-teal no-print" id="getInspectionLocation" type="button">⌖ Get Current Location</button>
+   <div class="small no-print">Your current location will be captured automatically when you select Yes or No above. Allow location access when your device asks.</div>
    <div style="margin-top:10px"><div class="rowline"><label>Map – drag the pin to adjust the inspection location</label><div class="map-tools no-print"><button class="btn btn-light" id="toggleMapView" type="button">Collapse Map</button><button class="btn btn-light" id="expandMapView" type="button">Expand Map</button></div></div><div id="inspectionMap" aria-label="Interactive inspection location map"></div><div class="small">Use the map layer control to switch between standard map and satellite imagery.</div></div>
-   <div class="grid" style="margin-top:12px">
-    <div><label for="technicianCount">How Many Technicians Including the Sub Team Leader?</label><input id="technicianCount" type="number" min="0" step="1" inputmode="numeric" placeholder="Enter number"><label for="technicianCountNotes" style="margin-top:7px">Notes (optional)</label><textarea id="technicianCountNotes" placeholder="Optional notes..."></textarea></div>
-   </div>
    <div class="grid" style="margin-top:10px">
-    <div><label for="inspectionLocation">Selected address / location</label><input id="inspectionLocation" readonly placeholder="Get current location or move the map pin"></div>
+    <div><label for="inspectionLocation">Selected address / location</label><input id="inspectionLocation" readonly placeholder="Captured automatically or move the map pin"></div>
     <div><label for="inspectionCoordinates">GPS coordinates</label><input id="inspectionCoordinates" readonly placeholder="Latitude, longitude"></div>
     <div><label for="inspectionTimestamp">Location date &amp; time stamp</label><input id="inspectionTimestamp" readonly placeholder="Automatically recorded when pin is set"></div>
    </div>
-   <div class="small" id="inspectionLocationStatus" role="status">Tap Get Current Location to place the pin, then drag it to the exact inspection point. Address and timestamp are recorded automatically.</div>
+   <div class="small" id="inspectionLocationStatus" role="status">Location is requested automatically after selecting Yes or No. You can drag the map pin to adjust the inspection point.</div>
   </div>
  </div>
 </section>
@@ -169,9 +181,9 @@ body{padding-bottom:84px}
  <div class="section-body" id="gpsQuestions"></div>
 </section>
 <section class="section">
- <div class="section-head"><span class="section-no">07</span><h2>Total Observation Notes <span class="optional">(Optional)</span></h2></div>
+ <div class="section-head"><span class="section-no">07</span><h2>Total Observation Notes</h2></div>
  <div class="section-body">
-  <textarea id="totalNotes" placeholder="Enter overall observations, recommendations or follow-up actions..."></textarea>
+  <label for="inspectionRating">Overall Inspection Rating (1–5)</label><select id="inspectionRating" required><option value="">Select rating</option><option value="1">1 – Poor</option><option value="2">2 – Below Average</option><option value="3">3 – Satisfactory</option><option value="4">4 – Good</option><option value="5">5 – Excellent</option></select><label for="totalNotes" style="margin-top:10px">Overall Observation Notes <span class="optional">(Optional)</span></label><textarea id="totalNotes" placeholder="Enter overall observations, recommendations or follow-up actions..."></textarea>
   <div style="margin-top:12px"><button class="btn btn-light no-print" id="toggleConcern" type="button">＋ Add Team Concern or Suggestion (Optional)</button></div>
   <div id="concernWrap" class="note-box hidden"><label for="teamConcern">Team Concern or Suggestion</label><textarea id="teamConcern" placeholder="Enter any optional team concern or suggestion..."></textarea></div>
  </div>
@@ -193,7 +205,7 @@ body{padding-bottom:84px}
   <div id="photoPreview" class="photo-grid"></div>
   <div class="no-print" style="margin-top:13px">
    <button class="btn btn-light" id="makeCollage" type="button">＋ Create optional photo collage</button>
-   <div class="small" style="margin-top:5px">The generated collage replaces the original photos in this inspection. The collage is used for PDF and sharing.</div>
+   <div class="small" style="margin-top:5px">The generated collage replaces the original photos in this inspection. The collage is included as the image attachment in PDF and Share Text.</div>
    <img id="collagePreview" class="hidden" alt="Photo collage preview">
   </div>
  </div>
@@ -237,31 +249,44 @@ body{padding-bottom:84px}
   progressFill.style.width=((current+1)/sections.length*100)+'%';progressLabel.textContent=`Section ${current+1} of ${sections.length}`;progressTitle.textContent=titles[current];nav.querySelector('#stepNavCount').textContent=`${current+1} / ${sections.length}`;back.disabled=current===0;next.disabled=false;next.textContent=current===sections.length-1?'Finish ✓':'Next →';if(scroll)window.scrollTo({top:0,behavior:'smooth'});
  }
  function firstMissing(){
-  const missing=[];const add=(label,el,sectionIndex)=>{if(!el)missing.push({label,el:null,sectionIndex});else missing.push({label,el,sectionIndex});};
-  const val=id=>(document.getElementById(id)?.value||'').trim();
-  if(!val('inspectorName'))add('Inspector Name',document.getElementById('inspectorName'),0);
-  if(!val('department'))add('Department',document.getElementById('department'),0);
-  if(!val('tlName'))add('Team Leader Name',document.getElementById('tlName'),1);
-  if(!val('tlMobile'))add('Team Leader Mobile Number',document.getElementById('tlMobile'),1);
-  if(!val('tlStatus'))add('Team Leader mobile condition',document.getElementById('tlStatus'),2);
-  if(!document.querySelector('input[name="tlAccess"]:checked'))add('Team Leader mobile system access',document.querySelector('input[name="tlAccess"]'),2);
-  if(!document.querySelector('input[name="plan"]:checked'))add('Same plan and location?',document.querySelector('input[name="plan"]'),3);
-  document.querySelectorAll('#systemQuestions .item').forEach((item,i)=>{if(!item.querySelector('input[type=radio]:checked'))add('System Access: '+item.querySelector('.item-title').textContent.replace(/^\d+\.\s*/,''),item.querySelector('input[type=radio]'),4);});
-  document.querySelectorAll('#gpsQuestions .item').forEach((item,i)=>{if(!item.querySelector('input[type=radio]:checked'))add('GPS: '+item.querySelector('.item-title').textContent.replace(/^\d+\.\s*/,''),item.querySelector('input[type=radio]'),5);});
-  if(!(typeof inspectionGeo!=='undefined' && inspectionGeo))add('Current inspection location (set or adjust map pin)',document.getElementById('getInspectionLocation'),3);
+  const missing=[],val=id=>(document.getElementById(id)?.value||'').trim();
+  const add=(label,el,sectionIndex)=>missing.push({label,el,sectionIndex});
+  [['Inspector Name','inspectorName',0],['Department','department',0],['Team Leader Name','tlName',1],['Team Leader Mobile Number','tlMobile',1],['Service or Area & Team','teamService',1],['Vehicle Plate Number','vehiclePlate',1],['Technicians including Sub Team Leader','technicianCount',1],['Team Leader mobile condition','tlStatus',2],['Internet data remaining – Team Leader','tlDataRemaining',2],['Overall Inspection Rating','inspectionRating',6]].forEach(([label,id,idx])=>{if(!val(id))add(label,document.getElementById(id),idx);});
+  [['tlAccess','Team Leader mobile system access',2],['tlCompanyOnly','Team Leader company-only use',2],['plan','Same plan and location?',3]].forEach(([name,label,idx])=>{if(!document.querySelector(`input[name="${name}"]:checked`))add(label,document.querySelector(`input[name="${name}"]`),idx);});
+  if(!document.getElementById('subTeam').classList.contains('hidden')){
+   [['stlName','Sub Team Leader Name'],['stlMobile','Sub Team Leader Mobile Number']].forEach(([id,label])=>{if(!val(id))add(label,document.getElementById(id),1);});
+   [['stlStatus','Sub Team Leader mobile condition'],['stlDataRemaining','Internet data remaining – Sub Team Leader']].forEach(([id,label])=>{if(!val(id))add(label,document.getElementById(id),2);});
+   ['stlAccess','stlCompanyOnly'].forEach(name=>{if(!document.querySelector(`input[name="${name}"]:checked`))add(name==='stlAccess'?'Sub Team Leader system access':'Sub Team Leader company-only use',document.querySelector(`input[name="${name}"]`),2);});
+  }
+  document.querySelectorAll('#systemQuestions .item').forEach(item=>{if(!item.querySelector('input[type=radio]:checked'))add('System Access: '+item.querySelector('.item-title').textContent.replace(/^\\d+\.\\s*/,''),item.querySelector('input[type=radio]'),4);});
+  document.querySelectorAll('#gpsQuestions .item').forEach(item=>{if(!item.querySelector('input[type=radio]:checked'))add('GPS: '+item.querySelector('.item-title').textContent.replace(/^\\d+\.\\s*/,''),item.querySelector('input[type=radio]'),5);});
+  if(!(typeof inspectionGeo!=='undefined'&&inspectionGeo))add('Current inspection location (set or adjust map pin)',document.getElementById('inspectionLocation'),3);
   return missing;
  }
- function showReview(){
+ function showSignatureStep(){
   document.getElementById('finalShareActions').classList.add('hidden');
-  let panel=document.getElementById('finishReview');if(!panel){panel=document.createElement('div');panel.id='finishReview';panel.className='review-panel no-print';document.querySelector('main').append(panel);}
-  const missing=firstMissing();
-  panel.innerHTML=`<h3>Inspection Completion Review</h3><p>${missing.length?`You have <strong>${missing.length} item(s)</strong> to review before sharing.`:'All required checklist fields have been completed.'}</p>${missing.length?'<ul class="review-missing">'+missing.map((m,i)=>`<li>${m.label}</li>`).join('')+'</ul>':'<p class="small">You can continue to share your inspection report.</p>'}<div class="review-actions"><button class="btn btn-light" id="backToMissing">← Back to missing fields</button><button class="btn btn-primary" id="continueToShare">Continue</button></div>`;
-  panel.scrollIntoView({behavior:'smooth',block:'start'});
-  document.getElementById('backToMissing').onclick=()=>{if(missing.length){const m=missing[0];showStep(m.sectionIndex);setTimeout(()=>{if(m.el){m.el.scrollIntoView({behavior:'smooth',block:'center'});m.el.focus?.({preventScroll:true});}},250);}else showStep(0);panel.classList.add('hidden');};
-  document.getElementById('continueToShare').onclick=()=>{panel.classList.add('hidden');document.getElementById('finalShareActions').classList.add('hidden');sections.forEach(section=>{section.classList.add('step-hidden');section.setAttribute('aria-hidden','true');});signatureMode=true;signatureSection.classList.remove('step-hidden');signatureSection.setAttribute('aria-hidden','false');progressFill.style.width='100%';progressLabel.textContent='Final step';progressTitle.textContent='Share Inspection Report';nav.querySelector('#stepNavCount').textContent='Final';back.disabled=false;next.disabled=false;next.textContent='Finish ✓';window.dispatchEvent(new Event('resize'));window.scrollTo({top:0,behavior:'smooth'});};
+  sections.forEach(section=>{section.classList.add('step-hidden');section.setAttribute('aria-hidden','true');});
+  signatureMode=true;signatureSection.classList.remove('step-hidden');signatureSection.setAttribute('aria-hidden','false');
+  progressFill.style.width='100%';progressLabel.textContent='Final step';progressTitle.textContent='Share Inspection Report';
+  nav.querySelector('#stepNavCount').textContent='Final';back.disabled=false;next.disabled=false;next.textContent='Finish ✓';
+  window.dispatchEvent(new Event('resize'));window.scrollTo({top:0,behavior:'smooth'});
  }
- function validateCurrent(){if(current!==0)return true;for(const field of [document.getElementById('inspectorName'),document.getElementById('department')])if(!field.value.trim()){field.setCustomValidity('Please complete this required field.');field.reportValidity();field.addEventListener('input',()=>field.setCustomValidity(''),{once:true});field.focus();return false;}return true;}
- back.addEventListener('click',()=>{document.getElementById('finishReview')?.classList.add('hidden');document.getElementById('finalShareActions')?.classList.add('hidden');if(signatureMode){showStep(sections.length-1);return;}showStep(current-1);});next.addEventListener('click',()=>{if(signatureMode){document.getElementById('finalShareActions').classList.remove('hidden');next.disabled=true;next.textContent='Finished ✓';document.getElementById('finalShareActions').scrollIntoView({behavior:'smooth',block:'center'});return;}if(!validateCurrent())return;if(current<sections.length-1)showStep(current+1);else showReview();});showStep(0,false);
+ function validateCurrent(){
+  const missing=firstMissing().filter(m=>m.sectionIndex===current);
+  if(!missing.length)return true;
+  const m=missing[0];alert('Please complete: '+m.label);
+  if(m.el){m.el.scrollIntoView({behavior:'smooth',block:'center'});m.el.focus?.({preventScroll:true});}
+  return false;
+ }
+ back.addEventListener('click',()=>{document.getElementById('finalShareActions')?.classList.add('hidden');if(signatureMode){showStep(sections.length-1);return;}showStep(current-1);});
+ next.addEventListener('click',()=>{
+  if(signatureMode){document.getElementById('finalShareActions').classList.remove('hidden');next.disabled=true;next.textContent='Finished ✓';document.getElementById('finalShareActions').scrollIntoView({behavior:'smooth',block:'center'});return;}
+  if(!validateCurrent())return;
+  if(current<sections.length-1){showStep(current+1);return;}
+  const missing=firstMissing();
+  if(missing.length){const m=missing[0];alert('Please complete: '+m.label);showStep(m.sectionIndex);setTimeout(()=>{if(m.el){m.el.scrollIntoView({behavior:'smooth',block:'center'});m.el.focus?.({preventScroll:true});}},250);return;}
+  showSignatureStep();
+ });showStep(0,false);
 })();
 const systemList=[
 "How to login? (Email & Authenticator)",
@@ -413,10 +438,8 @@ function initInspectionMap(){
 document.getElementById('toggleMapView').addEventListener('click',()=>{const mapEl=document.getElementById('inspectionMap');const collapsed=mapEl.classList.toggle('map-collapsed');mapEl.classList.remove('map-expanded');document.getElementById('toggleMapView').textContent=collapsed?'Show Map':'Collapse Map';setTimeout(()=>inspectionMap?.invalidateSize({pan:false}),80);});
 document.getElementById('expandMapView').addEventListener('click',()=>{const mapEl=document.getElementById('inspectionMap');mapEl.classList.remove('map-collapsed');mapEl.classList.toggle('map-expanded');document.getElementById('toggleMapView').textContent='Collapse Map';setTimeout(()=>inspectionMap?.invalidateSize({pan:false}),80);});
 
-document.getElementById('getInspectionLocation').addEventListener('click',()=>{
- const status=document.getElementById('inspectionLocationStatus');if(!window.isSecureContext||!navigator.geolocation){status.textContent='Location requires HTTPS (or localhost) and browser geolocation support.';return;}
- status.textContent='Requesting current device location…';navigator.geolocation.getCurrentPosition(pos=>{setInspectionPin(pos.coords.latitude,pos.coords.longitude,new Date(),'Current device location detected');},err=>{status.textContent=err.code===1?'Location permission denied. Allow location access and try again.':'Could not get current location. Check Location services and try again.';},{enableHighAccuracy:true,timeout:25000,maximumAge:0});
-});
+document.querySelectorAll('input[name="plan"]').forEach(r=>r.addEventListener('change',()=>detectLocationAutomatically()));
+
 window.addEventListener('load',()=>{initInspectionMap();detectLocationAutomatically();});
 
 // Touch- and mouse-enabled signature pads. Canvas coordinates are scaled for high-DPI screens.
@@ -453,21 +476,23 @@ function reportData(){
  const sys=questionData('systemQuestions',systemList),gps=questionData('gpsQuestions',gpsList);
  const plan={q:'Same plan and location?',a:selected('plan'),n:value('planNoteText')};
  const mobile=[
-  {name:'Team Leader Mobile',status:value('tlStatus'),access:selected('tlAccess'),notes:value('tlMobileNoteText'),accessNotes:value('tlAccessNoteText'),companyOnly:selected('tlCompanyOnly'),companyNotes:value('tlCompanyOnlyNotes'),dataRemaining:value('tlDataRemaining')}
+  {name:'Team Leader Mobile',status:value('tlStatus'),access:selected('tlAccess'),notes:value('tlMobileNoteText'),accessNotes:value('tlAccessNoteText'),companyOnly:selected('tlCompanyOnly'),companyNotes:value('tlCompanyOnlyNotes'),dataRemaining:value('tlDataRemaining')?value('tlDataRemaining')+' '+value('tlDataRemainingUnit'):'—'}
  ];
- if(hasSub)mobile.push({name:'Sub Team Leader Mobile',status:value('stlStatus'),access:selected('stlAccess'),notes:value('stlMobileNoteText'),accessNotes:value('stlAccessNoteText'),companyOnly:selected('stlCompanyOnly'),companyNotes:value('stlCompanyOnlyNotes'),dataRemaining:value('stlDataRemaining')});
- return {inspector:value('inspectorName'),department:value('department'),tl:value('tlName'),tlMobile:value('tlMobile'),teamService:value('teamService'),hasSub,stl:value('stlName'),stlMobile:value('stlMobile'),mobile,technicianCount:value('technicianCount'),technicianNotes:value('technicianCountNotes'),plan,sys,gps,total:value('totalNotes'),concern:value('teamConcern'),location:value('inspectionLocation')!=='—'?value('inspectionLocation'):value('photoLocation'),geo:inspectionGeo,generated:new Date(),tlSignature:signatureData.tlSignature(),inspectorSignature:signatureData.inspectorSignature()};
+ if(hasSub)mobile.push({name:'Sub Team Leader Mobile',status:value('stlStatus'),access:selected('stlAccess'),notes:value('stlMobileNoteText'),accessNotes:value('stlAccessNoteText'),companyOnly:selected('stlCompanyOnly'),companyNotes:value('stlCompanyOnlyNotes'),dataRemaining:value('stlDataRemaining')?value('stlDataRemaining')+' '+value('stlDataRemainingUnit'):'—'});
+ return {inspector:value('inspectorName'),department:value('department'),tl:value('tlName'),tlMobile:value('tlMobile'),teamService:value('teamService'),vehiclePlate:value('vehiclePlate'),hasSub,stl:value('stlName'),stlMobile:value('stlMobile'),mobile,technicianCount:value('technicianCount'),technicianNotes:'',plan,sys,gps,rating:value('inspectionRating'),total:value('totalNotes'),concern:value('teamConcern'),location:value('inspectionLocation')!=='—'?value('inspectionLocation'):value('photoLocation'),geo:inspectionGeo,generated:new Date(),tlSignature:signatureData.tlSignature(),inspectorSignature:signatureData.inspectorSignature()};
 }
 function reportText(d=reportData()){
- const lines=['ADPHC × EAGLE ENVIRONMENTAL SERVICES & PEST CONTROL','IT CHECKLIST INSPECTION','',`Inspector: ${d.inspector}`,`Department: ${d.department}`,`Team Leader: ${d.tl}`,`TL Mobile: ${d.tlMobile}`,`Team Service: ${d.teamService}`];
+ const lines=['ADPHC × EAGLE ENVIRONMENTAL SERVICES & PEST CONTROL','IT CHECKLIST INSPECTION','',`Inspector: ${d.inspector}`,`Department: ${d.department}`,`Team Leader: ${d.tl}`,`TL Mobile: ${d.tlMobile}`,`Service or Area & Team: ${d.teamService}`,`Vehicle Plate Number: ${d.vehiclePlate}`,`Technicians including Sub Team Leader: ${d.technicianCount}`];
  if(d.hasSub)lines.push(`Sub Team Leader: ${d.stl}`,`STL Mobile: ${d.stlMobile}`);
  lines.push('', 'MOBILE STATUS');
  d.mobile.forEach(m=>lines.push(`${m.name}: ${m.status}; Has access: ${m.access}`,`Company-only use: ${m.companyOnly}`,`Company-use notes: ${m.companyNotes}`,`Internet data remaining: ${m.dataRemaining}`,`Notes: ${m.notes}`,`Access notes: ${m.accessNotes}`));
- lines.push('', 'LOCATION OF INSPECTION VS. PLAN',`${d.plan.q}: ${d.plan.a}`,`Notes: ${d.plan.n}`,`Technician count including Sub Team Leader: ${d.technicianCount}`,`Technician count notes: ${d.technicianNotes}`,`Current location: ${d.location}`,`Coordinates: ${d.geo?d.geo.lat.toFixed(6)+', '+d.geo.lon.toFixed(6):'Not captured'}`,`Location date/time: ${d.geo?d.geo.timestamp.toLocaleString():'Not captured'}`,'','SYSTEM ACCESS');
+ lines.push('', 'LOCATION OF INSPECTION VS. PLAN',`${d.plan.q}: ${d.plan.a}`,`Notes: ${d.plan.n}`,`Current location: ${d.location}`);
+ if(d.geo){lines.push(`GPS Coordinates: ${d.geo.lat.toFixed(6)}, ${d.geo.lon.toFixed(6)}`,`Location date & time: ${(d.geo.timestamp||d.generated).toLocaleString()}`);}
+ lines.push('','SYSTEM ACCESS');
  d.sys.forEach((x,i)=>lines.push(`${i+1}. ${x.q}: ${x.a}`,`Notes: ${x.n}`));
  lines.push('','GPS');d.gps.forEach((x,i)=>lines.push(`${i+1}. ${x.q}: ${x.a}`,`Notes: ${x.n}`));
- lines.push('','TOTAL OBSERVATION NOTES',d.total,'','TEAM CONCERN OR SUGGESTION',d.concern,'','PHOTOS',`${photos.length} image(s) attached`,'','SIGNATURES',`Team Leader (${d.tl}): ${d.tlSignature?'Signed':'Not signed'}`,`Inspector (${d.inspector}): ${d.inspectorSignature?'Signed':'Not signed'}`,'',`Generated: ${d.generated.toLocaleString()}`);
- return lines.join('\n');
+ lines.push('','OVERALL INSPECTION RATING',d.rating+'/5','','TOTAL OBSERVATION NOTES',d.total,'','TEAM CONCERN OR SUGGESTION',d.concern,'','INSPECTION IMAGES',`${photos.length} image(s) attached`,'',`Generated: ${d.generated.toLocaleString()}`);
+ return lines.join('\n').replace(/\n/g,'\r\n');
 }
 function loadImage(src){return new Promise((res,rej)=>{const im=new Image();im.onload=()=>res(im);im.onerror=rej;im.src=src;});}
 async function stampedPhoto(p,d){
@@ -518,15 +543,33 @@ function addWrapped(doc,text,x,y,maxWidth,lineH=13){
 }
 function sectionTitle(doc,title,y){
  y=pdfEnsure(doc,y,38);
- doc.setFillColor(235,244,247);doc.roundedRect(PDF_LAYOUT.left,y-14,PDF_LAYOUT.width,24,4,4,'F');
- doc.setTextColor(23,70,107);doc.setFont('helvetica','bold');doc.setFontSize(10);
- doc.text(title,PDF_LAYOUT.left+10,y+2);
+ doc.setFillColor(23,63,89);doc.roundedRect(PDF_LAYOUT.left,y-14,PDF_LAYOUT.width,24,4,4,'F');
+ doc.setFillColor(7,142,152);doc.roundedRect(PDF_LAYOUT.left,y-14,5,24,2,2,'F');
+ doc.setTextColor(255,255,255);doc.setFont('helvetica','bold');doc.setFontSize(9.5);
+ doc.text(title,PDF_LAYOUT.left+12,y+2);
  doc.setTextColor(40,55,65);doc.setFont('helvetica','normal');doc.setFontSize(9);
  return y+24;
 }
 function pdfLabelValue(doc,label,value,y,labelX=PDF_LAYOUT.left+7,valueX=PDF_LAYOUT.left+155){
  y=pdfEnsure(doc,y,17);doc.setFont('helvetica','bold');doc.setFontSize(9);doc.text(label+':',labelX,y);
  doc.setFont('helvetica','normal');doc.text(String(value||'—'),valueX,y);return y+15;
+}
+async function buildPdfMap(lat,lon,cols=3,rows=2,zoom=16){
+ const n=2**zoom,latRad=lat*Math.PI/180;
+ const xt=(lon+180)/360*n,yt=(1-Math.asinh(Math.tan(latRad))/Math.PI)/2*n;
+ const cx=Math.floor(xt),cy=Math.floor(yt),w=cols*256,h=rows*256;
+ const canvas=document.createElement('canvas');canvas.width=w;canvas.height=h;
+ const ctx=canvas.getContext('2d');ctx.fillStyle='#e8eef0';ctx.fillRect(0,0,w,h);
+ const startX=cx-Math.floor(cols/2),startY=cy-Math.floor(rows/2);
+ const loadTile=(x,y)=>new Promise((resolve,reject)=>{const im=new Image();im.crossOrigin='anonymous';im.onload=()=>resolve({im,x,y});im.onerror=reject;im.src=`https://tile.openstreetmap.org/${zoom}/${(x+n)%n}/${Math.max(0,Math.min(n-1,y))}.png`;});
+ const tiles=await Promise.all(Array.from({length:cols*rows},(_,i)=>loadTile(startX+i%cols,startY+Math.floor(i/cols))));
+ tiles.forEach(t=>ctx.drawImage(t.im,(t.x-startX)*256,(t.y-startY)*256,256,256));
+ const px=(xt-startX)*256,py=(yt-startY)*256;
+ ctx.fillStyle='rgba(190,35,35,.18)';ctx.beginPath();ctx.arc(px,py,17,0,Math.PI*2);ctx.fill();
+ ctx.fillStyle='#c62828';ctx.beginPath();ctx.arc(px,py,8,0,Math.PI*2);ctx.fill();ctx.strokeStyle='#fff';ctx.lineWidth=3;ctx.stroke();
+ ctx.fillStyle='#fff';ctx.beginPath();ctx.arc(px,py,2.5,0,Math.PI*2);ctx.fill();
+ ctx.fillStyle='rgba(255,255,255,.88)';ctx.fillRect(5,h-20,250,15);ctx.fillStyle='#333';ctx.font='11px Arial';ctx.fillText('© OpenStreetMap contributors',9,h-9);
+ return canvas;
 }
 async function createPdf(){
  if(!window.jspdf?.jsPDF)throw new Error('PDF library did not load. Connect to the internet and try again.');
@@ -536,21 +579,35 @@ async function createPdf(){
  // Consistent, fixed-width header and margins on the first page.
  doc.addImage(adphc,'PNG',left,y,140,50,'adphc','FAST');
  doc.addImage(eagle,'PNG',right-140,y,140,50,'eagle','FAST');
- y+=62;doc.setDrawColor(7,142,152);doc.setLineWidth(2);doc.line(left,y,right,y);y+=23;
- doc.setTextColor(23,70,107);doc.setFont('helvetica','bold');doc.setFontSize(16);doc.text('IT CHECKLIST INSPECTION',left,y);
- doc.setFont('helvetica','normal');doc.setFontSize(8);doc.setTextColor(95,112,123);
- doc.text('Generated: '+d.generated.toLocaleString(),right,y,{align:'right'});y+=14;
- doc.text('ADPHC × Eagle Environmental Services & Pest Control',left,y);y+=23;
+ y+=62;doc.setFillColor(23,63,89);doc.roundedRect(left,y-3,right-left,43,5,5,'F');
+ doc.setFillColor(7,142,152);doc.roundedRect(left,y-3,6,43,2,2,'F');
+ doc.setTextColor(255,255,255);doc.setFont('helvetica','bold');doc.setFontSize(15);doc.text('IT CHECKLIST INSPECTION',left+16,y+15);
+ doc.setFont('helvetica','normal');doc.setFontSize(7.5);doc.setTextColor(224,239,242);
+ doc.text('ADPHC × Eagle Environmental Services & Pest Control',left+16,y+29);
+ doc.setFontSize(7.5);doc.text('GENERATED  '+d.generated.toLocaleString(),right-10,y+15,{align:'right'});y+=59;
 
- y=sectionTitle(doc,'01  INSPECTOR DETAILS',y);
- y=pdfLabelValue(doc,'Inspector Name',d.inspector,y);
- y=pdfLabelValue(doc,'Department',d.department,y);y+=7;
-
- y=sectionTitle(doc,'02  TEAM DETAILS',y);
- y=pdfLabelValue(doc,'Team Leader Name',d.tl,y);
- y=pdfLabelValue(doc,'Team Leader Mobile',d.tlMobile,y);
- y=pdfLabelValue(doc,'Team Service',d.teamService,y);
- if(d.hasSub){y=pdfLabelValue(doc,'Sub Team Leader Name',d.stl,y);y=pdfLabelValue(doc,'Sub Team Leader Mobile',d.stlMobile,y);}y+=7;
+ // Two aligned column titles and a continuous divider matching the detail columns.
+ y=pdfEnsure(doc,y,118);
+ const splitX=left+(right-left)*0.52, colPad=8, titleY=y+2, startY=y+22;
+ doc.setFillColor(23,70,107);doc.roundedRect(left,titleY-12,right-left,20,3,3,'F');
+ doc.setFont('helvetica','bold');doc.setFontSize(9);doc.setTextColor(255,255,255);
+ doc.text('TEAM DETAILS',left+colPad,titleY+1);doc.text('INSPECTOR DETAILS',splitX+colPad,titleY+1);
+ doc.setDrawColor(255,255,255);doc.setLineWidth(1);doc.line(splitX,titleY-8,splitX,titleY+8);
+ const drawPair=(label,value,x,yy,maxW)=>{
+  doc.setFont('helvetica','bold');doc.setFontSize(7.5);doc.setTextColor(65,82,92);doc.text(label.toUpperCase(),x,yy);
+  doc.setFont('helvetica','normal');doc.setFontSize(8.5);doc.setTextColor(35,48,57);
+  const lines=doc.splitTextToSize(String(value||'—'),maxW);doc.text(lines,x,yy+10);
+  return yy+12+Math.min(lines.length,2)*9;
+ };
+ let ly=startY, ry=startY;
+ const lx=left+colPad, rx=splitX+colPad, lw=splitX-left-2*colPad, rw=right-splitX-2*colPad;
+ ly=drawPair('Team Leader',d.tl,lx,ly,lw);ly=drawPair('Mobile',d.tlMobile,lx,ly,lw);
+ ly=drawPair('Service or Area & Team',d.teamService,lx,ly,lw);ly=drawPair('Vehicle Plate Number',d.vehiclePlate,lx,ly,lw);
+ ly=drawPair('Technicians incl. Sub Team Leader',d.technicianCount,lx,ly,lw);
+ if(d.hasSub){ly=drawPair('Sub Team Leader',d.stl,lx,ly,lw);ly=drawPair('Sub Team Leader Mobile',d.stlMobile,lx,ly,lw);}
+ ry=drawPair('Inspector Name',d.inspector,rx,ry,rw);ry=drawPair('Department',d.department,rx,ry,rw);
+ doc.setDrawColor(190,205,213);doc.setLineWidth(.8);doc.line(splitX,startY-8,splitX,Math.max(ly,ry)+3);
+ y=Math.max(ly,ry)+8;
 
  y=sectionTitle(doc,'03  MOBILE STATUS',y);
  d.mobile.forEach(m=>{
@@ -565,12 +622,22 @@ async function createPdf(){
  });y+=3;
 
  y=sectionTitle(doc,'04  LOCATION OF INSPECTION VS. PLAN',y);
- y=addWrapped(doc,`Same plan and location?  ${d.plan.a||'—'}`,left+7,y,right-left-14,13);
+ const planRowY=y,mapW=154,mapH=86,mapX=right-mapW-7,mapY=planRowY-12;
+ y=addWrapped(doc,`Same plan and location?  ${d.plan.a||'—'}`,left+7,planRowY,right-left-mapW-28,13);
+ if(d.geo){
+  const mapUrl=`https://www.google.com/maps?q=${d.geo.lat},${d.geo.lon}`;
+  try{
+   const c=await buildPdfMap(d.geo.lat,d.geo.lon,3,2,16);
+   doc.addImage(c.toDataURL('image/png'),'PNG',mapX,mapY,mapW,mapH,'inspection-location-map','FAST');
+  }catch(mapErr){
+   doc.setFillColor(237,244,247);doc.roundedRect(mapX,mapY,mapW,mapH,4,4,'F');doc.setDrawColor(7,142,152);doc.roundedRect(mapX,mapY,mapW,mapH,4,4,'S');
+   const px=mapX+mapW/2,py=mapY+mapH/2-5;doc.setFillColor(194,55,49);doc.circle(px,py,7,'F');doc.setFillColor(255,255,255);doc.circle(px,py,2.5,'F');
+   doc.setTextColor(23,70,107);doc.setFont('helvetica','bold');doc.setFontSize(8);doc.text('OPEN LOCATION MAP',mapX+mapW/2,mapY+mapH-9,{align:'center'});
+  }
+  doc.link(mapX,mapY,mapW,mapH,{url:mapUrl});doc.setTextColor(23,70,107);doc.setFont('helvetica','bold');doc.setFontSize(7);doc.text('CLICK MAP TO OPEN',mapX+mapW/2,mapY+mapH+9,{align:'center'});y=Math.max(y,mapY+mapH+15);
+ }else{doc.setFillColor(237,244,247);doc.roundedRect(mapX,mapY,mapW,mapH,4,4,'F');doc.setTextColor(95,112,123);doc.setFont('helvetica','normal');doc.setFontSize(8);doc.text('Location map not captured',mapX+mapW/2,mapY+mapH/2,{align:'center'});y=Math.max(y,mapY+mapH+8);}
  if(d.plan.n&&d.plan.n!=='—')y=addWrapped(doc,`Notes: ${d.plan.n}`,left+7,y,right-left-14,13);
- y=addWrapped(doc,`Technicians including Sub Team Leader: ${d.technicianCount||'—'}`,left+7,y,right-left-14,13);
- if(d.technicianNotes&&d.technicianNotes!=='—')y=addWrapped(doc,`Technician count notes: ${d.technicianNotes}`,left+7,y,right-left-14,13);
- y=addWrapped(doc,`Current location: ${d.location||'Not captured'}`,left+7,y,right-left-14,13);
- if(d.geo){y=addWrapped(doc,`Coordinates: ${d.geo.lat.toFixed(6)}, ${d.geo.lon.toFixed(6)}`,left+7,y,right-left-14,13);y=addWrapped(doc,`Location date/time: ${d.geo.timestamp.toLocaleString()}`,left+7,y,right-left-14,13);}y+=8;
+ y=addWrapped(doc,`Location: ${d.location||'Not captured'}`,left+7,y,right-left-14,13);y+=8;
 
  const addQA=(title,arr)=>{
   y=sectionTitle(doc,title,y);
@@ -586,7 +653,10 @@ async function createPdf(){
  addQA('05  SYSTEM ACCESS',d.sys);addQA('06  GPS',d.gps);
 
  y=sectionTitle(doc,'07  TOTAL OBSERVATION NOTES',y);
- y=addWrapped(doc,d.total&&d.total!=='—'?d.total:'No general observation notes provided.',left+7,y,right-left-14,13);y+=8;
+ doc.setFont('helvetica','bold');doc.setFontSize(9);doc.setTextColor(23,70,107);
+ doc.text(`OVERALL INSPECTION RATING: ${d.rating||'—'} / 5`,left+7,y);y+=14;
+ doc.setFont('helvetica','normal');doc.setTextColor(40,55,65);
+ y=addWrapped(doc,d.total&&d.total!=='—'?d.total:'No observation notes provided.',left+7,y,right-left-14,12);y+=6;
  y=sectionTitle(doc,'08  TEAM CONCERN OR SUGGESTION (OPTIONAL)',y);
  y=addWrapped(doc,d.concern&&d.concern!=='—'?d.concern:'None provided.',left+7,y,right-left-14,13);y+=8;
  y=sectionTitle(doc,'09  SIGNATURES',y);
@@ -618,9 +688,9 @@ async function createPdf(){
  return doc;
 }
 function pdfFileName(d){
- const clean=(d.tl&&d.tl!=='—'?d.tl:'Team_Leader').normalize('NFKD').replace(/[\\u0300-\\u036f]/g,'').replace(/[^a-zA-Z0-9]+/g,'_').replace(/^_+|_+$/g,'');
+ const clean=v=>(String(v||'').normalize('NFKD').replace(/[\u0300-\u036f]/g,'').replace(/[^a-zA-Z0-9]+/g,'_').replace(/^_+|_+$/g,'')||'Unknown');
  const date=d.generated.getFullYear()+'-'+String(d.generated.getMonth()+1).padStart(2,'0')+'-'+String(d.generated.getDate()).padStart(2,'0');
- return `IT_inspection_${clean||'Team_Leader'}_${date}.pdf`;
+ return `${date}_IT_inspection_${clean(d.tl)}_${clean(d.inspector)}.pdf`;
 }
 document.getElementById('sharePdf').addEventListener('click',async()=>{
  const b=document.getElementById('sharePdf'),status=document.getElementById('shareStatus');b.disabled=true;b.textContent='Preparing PDF…';status.textContent='Generating your branded inspection PDF…';
@@ -632,13 +702,20 @@ document.getElementById('sharePdf').addEventListener('click',async()=>{
  b.disabled=false;b.textContent='▣ Share as PDF';
 });
 document.getElementById('shareText').addEventListener('click',async()=>{
- const text=reportText();
+ const d=reportData(),text=reportText(d),files=[];
+ const safeName=v=>(String(v||'Unknown').normalize('NFKD').replace(/[\u0300-\u036f]/g,'').replace(/[^a-zA-Z0-9]+/g,'_').replace(/^_+|_+$/g,'')||'Unknown');
+ const reportPrefix=`${d.generated.getFullYear()}-${String(d.generated.getMonth()+1).padStart(2,'0')}-${String(d.generated.getDate()).padStart(2,'0')}_IT_inspection_${safeName(d.tl)}_${safeName(d.inspector)}`;
  try{
+  for(let i=0;i<photos.length;i++){
+   const p=photos[i],blob=p.file instanceof Blob?p.file:await (await fetch(p.url)).blob();
+   const ext=(p.file?.name?.split('.').pop()||'jpg').toLowerCase().replace(/[^a-z0-9]/g,'')||'jpg';
+   files.push(new File([blob],`${reportPrefix}_${p.isCollage?'Photo_Collage':`Photo_${i+1}`}.${ext}`,{type:blob.type||'image/jpeg'}));
+  }
   if(navigator.share){
-   const files=photos.map((p,i)=>new File([p.file],`Inspection_Photo_${i+1}.${(p.file.name.split('.').pop()||'jpg').toLowerCase()}`,{type:p.file.type||'image/jpeg'}));
-   if(files.length&&navigator.canShare&&navigator.canShare({files}))await navigator.share({title:'IT Checklist Inspection',text,files});
-   else {await navigator.share({title:'IT Checklist Inspection',text});document.getElementById('shareStatus').textContent=files.length?'Text shared. This browser cannot attach images in the same share; share the photos separately from the photo section.':'Report text shared.';}
-  }else{await navigator.clipboard.writeText(text);document.getElementById('shareStatus').textContent='Report text copied. Your browser does not support sharing image attachments; share the photos separately from the photo section.';alert('Report text copied. Paste it into WhatsApp. Image attachments are not supported by this browser share function.');}
+   if(files.length&&navigator.canShare&&navigator.canShare({files})){
+    await navigator.share({title:'IT Checklist Inspection',text,files});document.getElementById('shareStatus').textContent=`Inspection text and ${files.length} image attachment(s) shared.`;
+   }else{await navigator.share({title:'IT Checklist Inspection',text});document.getElementById('shareStatus').textContent=files.length?'Text shared. This browser cannot attach image files in one share; attach the images separately or use Share as PDF.':'Complete inspection text shared.';}
+  }else{await navigator.clipboard.writeText(text);document.getElementById('shareStatus').textContent=files.length?'Complete inspection text copied. This browser cannot attach images; use Share as PDF or attach images separately.':'Complete inspection text copied.';alert('Complete inspection text copied. '+(files.length?'Image attachments are not supported by this browser share function; use Share as PDF or attach images separately.':'Paste it into WhatsApp.'));}
  }catch(e){if(e.name!=='AbortError')alert('Sharing was not completed. '+e.message);}
 });
 </script>
