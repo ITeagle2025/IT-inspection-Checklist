@@ -79,6 +79,15 @@ body{padding-bottom:84px}
 .status-block{padding:10px;margin-bottom:8px}
 @media(max-width:650px){.detail-split{grid-template-columns:1fr;gap:10px}.detail-divider{height:1px;min-height:1px;width:100%}}
 .section{border-radius:10px;margin-bottom:10px}.section-head{padding:10px 13px}.section-body{padding:12px 13px}.item{padding:9px 0}.status-block{padding:10px;margin-bottom:8px}
+
+/* Reliable searchable dropdowns with a visible arrow and scrollable results */
+.search-select{position:relative;width:100%}.search-select-control{display:flex;align-items:stretch;position:relative}
+.search-select-control input{width:100%;padding-right:46px!important}
+.search-select-arrow{position:absolute;right:3px;top:3px;bottom:3px;width:40px;border:0;border-left:1px solid #d6e0e5;background:#f3f7f9;color:#17466b;border-radius:0 7px 7px 0;font-size:18px;cursor:pointer;z-index:2}
+.search-select-menu{position:absolute;z-index:1000;top:calc(100% + 4px);left:0;right:0;max-height:260px;overflow-y:auto;background:#fff;border:1px solid #9fb5c1;border-radius:8px;box-shadow:0 8px 24px rgba(18,48,65,.18);display:none}
+.search-select.open .search-select-menu{display:block}.search-select-option{display:block;width:100%;text-align:left;padding:10px 12px;border:0;border-bottom:1px solid #edf1f3;background:#fff;color:#23343e;font:inherit;cursor:pointer}
+.search-select-option:hover,.search-select-option:focus{background:#eaf4f7;outline:none}.search-select-empty{padding:12px;color:#687985;font-size:13px}
+.search-select.invalid input{border-color:#c62828!important;box-shadow:0 0 0 2px rgba(198,40,40,.1)}
 </style>
 </head>
 <body>
@@ -99,7 +108,7 @@ body{padding-bottom:84px}
  <div class="section-head"><span class="section-no">01</span><h2>Inspector Details</h2></div>
  <div class="section-body grid">
   <div><label for="inspectorName">Name</label><input id="inspectorName" required placeholder="Inspector full name"></div>
-  <div><label for="department">Department</label><input id="department" list="departmentOptions" required placeholder="Search or select department"><datalist id="departmentOptions"><option value="IT Department"></option><option value="Admin/HR Department"></option><option value="Contract Department"></option><option value="Operation Department"></option><option value="Workshop Department"></option><option value="QA/Safety Department"></option></datalist></div>
+  <div><label for="department">Department</label><input id="department" required placeholder="Search or select department"><datalist id="departmentOptions"><option value="IT Department"></option><option value="Admin/HR Department"></option><option value="Contract Department"></option><option value="Operation Department"></option><option value="Workshop Department"></option><option value="QA/Safety Department"></option></datalist></div>
  </div>
 </section>
 <section class="section">
@@ -108,7 +117,7 @@ body{padding-bottom:84px}
   <div class="grid">
    <div><label for="tlName">Name of Team Leader</label><input id="tlName" required placeholder="Team leader name"></div>
    <div><label for="tlMobile">Mobile Number of TL</label><input id="tlMobile" type="tel" inputmode="tel" required placeholder="+971 5X XXX XXXX"></div>
-   <div><label for="teamService">Service or Area &amp; Team</label><input id="teamService" list="teamServiceOptions" required placeholder="Search or select service / area and team"><datalist id="teamServiceOptions"><option value="A1-T1 City Services Mosquito Control"></option><option value="A1-T2 City Services Mosquito Control"></option><option value="A1-T3 City Services Mosquito Control"></option><option value="A1-T4 City Services Flies Control (Simco Sprayer)"></option><option value="A1-T5 City Services Rodent &amp; Cockroach Control"></option><option value="A1-T6 City Services Rodent &amp; Cockroach Control"></option><option value="A1-T7 Palaces &amp; VIP Villas &amp; Government"></option><option value="A1-T8 Space Treatment ULV &amp; Fogging 3 in 1"></option><option value="A2-T10 Unscheduled Services"></option><option value="A2-T11 Unscheduled Services"></option><option value="A2-T12 Unscheduled Services"></option><option value="A2-T13 Unscheduled Services"></option><option value="A2-T14 City Services Mosquito Control"></option><option value="A2-T15 City Services Mosquito Control"></option><option value="A2-T16 City Services Mosquito Control"></option><option value="A2-T17 City Services Aedes Aeypti Control"></option><option value="A2-T18 City Services Flies Control"></option><option value="A2-T20 City Services Cockroach Control"></option><option value="A2-T21 City Services Cockroach Control"></option><option value="A2-T22 City Services Rodent Control"></option><option value="A2-T23 City Services Rodent Control"></option><option value="A2-T24 City Services Rodent Control"></option><option value="A2-T25 Palaces &amp; VIP Villas &amp; Government"></option><option value="A2-T9 Unscheduled Services"></option><option value="A3-T26 Unscheduled Services"></option><option value="A3-T27 Unscheduled Services"></option><option value="A3-T28 Unscheduled Services"></option><option value="A3-T29 Unscheduled Services"></option><option value="A3-T30 Unscheduled Services"></option><option value="A3-T31 Unscheduled Services"></option><option value="A3-T32 Unscheduled Services"></option><option value="A3-T33 City Services Mosquito Control"></option><option value="A3-T34 City Services Mosquito Control"></option><option value="A3-T35 City Services Aedes Aeypti Control"></option><option value="A3-T36 City Services Flies Control"></option><option value="A3-T37 City Services Flies Control"></option><option value="A3-T38 City Services Rodent Control"></option><option value="A3-T39 City Services Rodent Control"></option><option value="A3-T40 City Services Rodent Control"></option><option value="A3-T41 City Services Cockroach Control"></option><option value="A3-T42 City Services Cockroach Control"></option><option value="A3-T43 Palaces &amp; VIP Villas &amp; Government"></option><option value="A3-T44 Space Treatment ULV &amp; Fogging 3 in 1"></option><option value="A4-T45 Unscheduled Services"></option><option value="A4-T46 Unscheduled Services"></option><option value="A4-T47 Unscheduled Services"></option><option value="A4-T48 Unscheduled Services"></option><option value="A4-T49 Unscheduled Services"></option><option value="A4-T50 City Services Mosquito Control"></option><option value="A4-T51 City Services Mosquito Control"></option><option value="A4-T52 City Services Aedes Aeypti Control"></option><option value="A4-T53 City Services Flies Control"></option><option value="A4-T54 City Services Flies Control"></option><option value="A4-T55 City Services Flies Control (Simco Sprayer)"></option><option value="A4-T56 City Services Rodent Control"></option><option value="A4-T57 City Services Rodent Control"></option><option value="A4-T58 City Services Rodent Control"></option><option value="A4-T59 City Services Cockroach Control"></option><option value="A4-T60 City Services Cockroach Control"></option><option value="A4-T61 Palaces &amp; VIP Villas &amp; Government"></option><option value="A5-T62 Unscheduled Services"></option><option value="A5-T63 City Services Mosquito Control"></option><option value="A5-T64 City Services Mosquito Control"></option><option value="A5-T65 City Services Mosquito Control"></option><option value="A5-T66 City Services Flies Control (Simco Sprayer)"></option><option value="A5-T67 City Services Rodent &amp; Cockroach Control"></option><option value="A5-T68 City Services Rodent &amp; Cockroach Control"></option><option value="A5-T69 Farm Services"></option><option value="A5-T70 Farm Services"></option><option value="A5-T71 Farm Services"></option><option value="A5-T72 Ezab Services"></option><option value="A5-T73 Palaces &amp; VIP Villas &amp; Government"></option><option value="A5-T74 Space Treatment ULV &amp; Fogging 3 in 1"></option><option value="S1 Flies, Rodent &amp; Cockoraches"></option><option value="S2 Flies, Rodent &amp; Cockoraches"></option><option value="S3 Flies, Rodent &amp; Cockoraches"></option><option value="S4 Mosquito Survey"></option><option value="S5 Mosquito Survey"></option><option value="S6 Mosquito Survey"></option><option value="S7 Smart trap"></option><option value="S8 Smart trap"></option></datalist></div>
+   <div><label for="teamService">Service or Area &amp; Team</label><input id="teamService" required placeholder="Search or select service / area and team"><datalist id="teamServiceOptions"><option value="A1-T1 City Services Mosquito Control"></option><option value="A1-T2 City Services Mosquito Control"></option><option value="A1-T3 City Services Mosquito Control"></option><option value="A1-T4 City Services Flies Control (Simco Sprayer)"></option><option value="A1-T5 City Services Rodent &amp; Cockroach Control"></option><option value="A1-T6 City Services Rodent &amp; Cockroach Control"></option><option value="A1-T7 Palaces &amp; VIP Villas &amp; Government"></option><option value="A1-T8 Space Treatment ULV &amp; Fogging 3 in 1"></option><option value="A2-T10 Unscheduled Services"></option><option value="A2-T11 Unscheduled Services"></option><option value="A2-T12 Unscheduled Services"></option><option value="A2-T13 Unscheduled Services"></option><option value="A2-T14 City Services Mosquito Control"></option><option value="A2-T15 City Services Mosquito Control"></option><option value="A2-T16 City Services Mosquito Control"></option><option value="A2-T17 City Services Aedes Aeypti Control"></option><option value="A2-T18 City Services Flies Control"></option><option value="A2-T20 City Services Cockroach Control"></option><option value="A2-T21 City Services Cockroach Control"></option><option value="A2-T22 City Services Rodent Control"></option><option value="A2-T23 City Services Rodent Control"></option><option value="A2-T24 City Services Rodent Control"></option><option value="A2-T25 Palaces &amp; VIP Villas &amp; Government"></option><option value="A2-T9 Unscheduled Services"></option><option value="A3-T26 Unscheduled Services"></option><option value="A3-T27 Unscheduled Services"></option><option value="A3-T28 Unscheduled Services"></option><option value="A3-T29 Unscheduled Services"></option><option value="A3-T30 Unscheduled Services"></option><option value="A3-T31 Unscheduled Services"></option><option value="A3-T32 Unscheduled Services"></option><option value="A3-T33 City Services Mosquito Control"></option><option value="A3-T34 City Services Mosquito Control"></option><option value="A3-T35 City Services Aedes Aeypti Control"></option><option value="A3-T36 City Services Flies Control"></option><option value="A3-T37 City Services Flies Control"></option><option value="A3-T38 City Services Rodent Control"></option><option value="A3-T39 City Services Rodent Control"></option><option value="A3-T40 City Services Rodent Control"></option><option value="A3-T41 City Services Cockroach Control"></option><option value="A3-T42 City Services Cockroach Control"></option><option value="A3-T43 Palaces &amp; VIP Villas &amp; Government"></option><option value="A3-T44 Space Treatment ULV &amp; Fogging 3 in 1"></option><option value="A4-T45 Unscheduled Services"></option><option value="A4-T46 Unscheduled Services"></option><option value="A4-T47 Unscheduled Services"></option><option value="A4-T48 Unscheduled Services"></option><option value="A4-T49 Unscheduled Services"></option><option value="A4-T50 City Services Mosquito Control"></option><option value="A4-T51 City Services Mosquito Control"></option><option value="A4-T52 City Services Aedes Aeypti Control"></option><option value="A4-T53 City Services Flies Control"></option><option value="A4-T54 City Services Flies Control"></option><option value="A4-T55 City Services Flies Control (Simco Sprayer)"></option><option value="A4-T56 City Services Rodent Control"></option><option value="A4-T57 City Services Rodent Control"></option><option value="A4-T58 City Services Rodent Control"></option><option value="A4-T59 City Services Cockroach Control"></option><option value="A4-T60 City Services Cockroach Control"></option><option value="A4-T61 Palaces &amp; VIP Villas &amp; Government"></option><option value="A5-T62 Unscheduled Services"></option><option value="A5-T63 City Services Mosquito Control"></option><option value="A5-T64 City Services Mosquito Control"></option><option value="A5-T65 City Services Mosquito Control"></option><option value="A5-T66 City Services Flies Control (Simco Sprayer)"></option><option value="A5-T67 City Services Rodent &amp; Cockroach Control"></option><option value="A5-T68 City Services Rodent &amp; Cockroach Control"></option><option value="A5-T69 Farm Services"></option><option value="A5-T70 Farm Services"></option><option value="A5-T71 Farm Services"></option><option value="A5-T72 Ezab Services"></option><option value="A5-T73 Palaces &amp; VIP Villas &amp; Government"></option><option value="A5-T74 Space Treatment ULV &amp; Fogging 3 in 1"></option><option value="S1 Flies, Rodent &amp; Cockoraches"></option><option value="S2 Flies, Rodent &amp; Cockoraches"></option><option value="S3 Flies, Rodent &amp; Cockoraches"></option><option value="S4 Mosquito Survey"></option><option value="S5 Mosquito Survey"></option><option value="S6 Mosquito Survey"></option><option value="S7 Smart trap"></option><option value="S8 Smart trap"></option></datalist></div>
    <div><label for="vehiclePlate">Vehicle Plate Number</label><input id="vehiclePlate" required placeholder="Enter vehicle plate number"></div>
    <div><label for="technicianCount">Technicians including Sub Team Leader</label><input id="technicianCount" type="number" min="0" step="1" required placeholder="Enter number"></div>
   </div>
@@ -205,7 +214,7 @@ body{padding-bottom:84px}
   <div id="photoPreview" class="photo-grid"></div>
   <div class="no-print" style="margin-top:13px">
    <button class="btn btn-light" id="makeCollage" type="button">＋ Create optional photo collage</button>
-   <div class="small" style="margin-top:5px">The generated collage replaces the original photos in this inspection. The collage is included as the image attachment in PDF and Share Text.</div>
+   <div class="small" style="margin-top:5px">The collage is an optional PDF layout only. Share Text always attaches the original inspection photos individually, whether or not you create a collage.</div>
    <img id="collagePreview" class="hidden" alt="Photo collage preview">
   </div>
  </div>
@@ -233,7 +242,27 @@ body{padding-bottom:84px}
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 <script>
 (function initSectionWizard(){
- const allSections=[...document.querySelectorAll('main > section.section')]; if(!allSections.length)return;
+ 
+// Replace browser-dependent datalists with a consistent searchable dropdown.
+function installSearchSelect(inputId,listId){
+ const input=document.getElementById(inputId),list=document.getElementById(listId);if(!input||!list)return;
+ const values=[...list.querySelectorAll('option')].map(o=>o.value).filter(Boolean);list.remove();
+ const wrap=document.createElement('div');wrap.className='search-select';input.parentNode.insertBefore(wrap,input);wrap.appendChild(input);input.removeAttribute('list');input.setAttribute('autocomplete','off');input.setAttribute('aria-autocomplete','list');input.setAttribute('aria-expanded','false');
+ const control=document.createElement('div');control.className='search-select-control';wrap.insertBefore(control,input);control.appendChild(input);
+ const arrow=document.createElement('button');arrow.type='button';arrow.className='search-select-arrow';arrow.setAttribute('aria-label','Show options');arrow.innerHTML='▾';control.appendChild(arrow);
+ const menu=document.createElement('div');menu.className='search-select-menu';menu.setAttribute('role','listbox');wrap.appendChild(menu);
+ function render(){const q=input.value.trim().toLowerCase(),matches=values.filter(v=>v.toLowerCase().includes(q));menu.innerHTML='';if(!matches.length){const empty=document.createElement('div');empty.className='search-select-empty';empty.textContent='No matching options';menu.appendChild(empty);return;}
+  matches.forEach(v=>{const b=document.createElement('button');b.type='button';b.className='search-select-option';b.textContent=v;b.setAttribute('role','option');b.addEventListener('click',()=>{input.value=v;input.dataset.selected='true';input.setCustomValidity('');wrap.classList.remove('invalid');close();input.dispatchEvent(new Event('change',{bubbles:true}));});menu.appendChild(b);});}
+ function open(){render();wrap.classList.add('open');input.setAttribute('aria-expanded','true');}
+ function close(){wrap.classList.remove('open');input.setAttribute('aria-expanded','false');}
+ arrow.addEventListener('click',()=>wrap.classList.contains('open')?close():open());input.addEventListener('focus',open);input.addEventListener('input',()=>{input.dataset.selected='';input.setCustomValidity('Please select an option from the dropdown list.');wrap.classList.remove('invalid');open();});
+ input.addEventListener('keydown',e=>{if(e.key==='ArrowDown'){e.preventDefault();open();menu.querySelector('button')?.focus();}else if(e.key==='Escape')close();});
+ document.addEventListener('click',e=>{if(!wrap.contains(e.target))close();});
+ input.addEventListener('invalid',()=>wrap.classList.add('invalid'));
+}
+installSearchSelect('department','departmentOptions');installSearchSelect('teamService','teamServiceOptions');
+
+const allSections=[...document.querySelectorAll('main > section.section')]; if(!allSections.length)return;
  const signatureSection=allSections.pop();
  const sections=allSections;
  let current=0,signatureMode=false;
@@ -260,6 +289,7 @@ body{padding-bottom:84px}
   }
   document.querySelectorAll('#systemQuestions .item').forEach(item=>{if(!item.querySelector('input[type=radio]:checked'))add('System Access: '+item.querySelector('.item-title').textContent.replace(/^\\d+\.\\s*/,''),item.querySelector('input[type=radio]'),4);});
   document.querySelectorAll('#gpsQuestions .item').forEach(item=>{if(!item.querySelector('input[type=radio]:checked'))add('GPS: '+item.querySelector('.item-title').textContent.replace(/^\\d+\.\\s*/,''),item.querySelector('input[type=radio]'),5);});
+  ['department','teamService'].forEach((id)=>{const el=document.getElementById(id);if(el&&!['true'].includes(el.dataset.selected)){const label=id==='department'?'Department (select from dropdown)':'Service or Area & Team (select from dropdown)';add(label,el,id==='department'?0:1);el.closest('.search-select')?.classList.add('invalid');}});
   if(!(typeof inspectionGeo!=='undefined'&&inspectionGeo))add('Current inspection location (set or adjust map pin)',document.getElementById('inspectionLocation'),3);
   return missing;
  }
@@ -342,7 +372,7 @@ document.addEventListener('click',e=>{
  const target=document.getElementById(b.dataset.target);target.classList.toggle('hidden');
  if(b.classList.contains('note-toggle'))b.textContent=target.classList.contains('hidden')?'＋ Add notes':'− Hide notes';
 });
-let photos=[],photoStampLocation='',collageData=null,inspectionGeo=null;
+let photos=[],photoStampLocation='',collageData=null,collagePhoto=null,inspectionGeo=null;
 const galleryInput=document.getElementById('galleryInput'),cameraInput=document.getElementById('cameraInput');
 document.getElementById('uploadGallery').addEventListener('click',()=>galleryInput.click());
 document.getElementById('takePhoto').addEventListener('click',()=>cameraInput.click());
@@ -350,7 +380,7 @@ document.getElementById('takePhoto').addEventListener('click',()=>cameraInput.cl
  const incoming=Array.from(e.target.files||[]);
  if(photos.length+incoming.length>6){alert('Maximum of 6 photos. Please select no more than '+(6-photos.length)+' additional image(s).');e.target.value='';return;}
  for(const file of incoming){if(!file.type.startsWith('image/'))continue;photos.push({file,url:URL.createObjectURL(file),stamp:new Date()});}
- e.target.value='';renderPhotos();collageData=null;document.getElementById('collagePreview').classList.add('hidden');document.getElementById('makeCollage').textContent='＋ Create optional photo collage';
+ e.target.value='';renderPhotos();collageData=null;collagePhoto=null;document.getElementById('collagePreview').classList.add('hidden');document.getElementById('makeCollage').textContent='＋ Create optional photo collage';
 }));
 function renderPhotos(){
  const host=document.getElementById('photoPreview');host.innerHTML='';
@@ -358,7 +388,7 @@ function renderPhotos(){
   const div=document.createElement('div');div.className='photo-card';
   const img=document.createElement('img');img.src=p.url;img.alt='Inspection photo '+(i+1);
   const b=document.createElement('button');b.type='button';b.className='btn btn-danger no-print';b.textContent='Remove';
-  b.onclick=()=>{photos.splice(i,1);renderPhotos();collageData=null;document.getElementById('collagePreview').classList.add('hidden');document.getElementById('makeCollage').textContent='＋ Create optional photo collage';};
+  b.onclick=()=>{photos.splice(i,1);renderPhotos();collageData=null;if(collagePhoto?.url)URL.revokeObjectURL(collagePhoto.url);collagePhoto=null;document.getElementById('collagePreview').classList.add('hidden');document.getElementById('makeCollage').textContent='＋ Create optional photo collage';};
   div.append(img,b);host.append(div);
  });
 }
@@ -519,17 +549,13 @@ async function makeCollage(){
 document.getElementById('makeCollage').addEventListener('click',async()=>{
  const b=document.getElementById('makeCollage');b.disabled=true;b.textContent='Creating collage…';
  try{
-  const data=await makeCollage();
+  const data=await makeCollage();collageData=data;
   const blob=await (await fetch(data)).blob();
-  // Replace every source photo with the single generated collage image.
-  photos.forEach(p=>{if(p.url)URL.revokeObjectURL(p.url);});
   const file=new File([blob],'inspection-collage.jpg',{type:'image/jpeg'});
-  photos=[{file,url:URL.createObjectURL(file),stamp:new Date(),isCollage:true}];
-  collageData=null;
-  renderPhotos();
-  document.getElementById('collagePreview').classList.add('hidden');
-  b.textContent='✓ Collage replaced original photos';
-  document.getElementById('gpsMessage').textContent='Collage created. The original uploaded/taken photos have been replaced by one collage image.';
+  collagePhoto={file,url:URL.createObjectURL(file),stamp:new Date(),isCollage:true};
+  const preview=document.getElementById('collagePreview');preview.src=data;preview.classList.remove('hidden');
+  b.textContent='✓ Collage ready for PDF';
+  document.getElementById('gpsMessage').textContent='Collage created for the PDF only. Share Text will continue attaching the original inspection photos individually.';
  }catch(e){console.error(e);alert('Could not create collage.');b.textContent='＋ Create optional photo collage';}
  b.disabled=false;
 });
@@ -565,9 +591,10 @@ async function buildPdfMap(lat,lon,cols=3,rows=2,zoom=16){
  const tiles=await Promise.all(Array.from({length:cols*rows},(_,i)=>loadTile(startX+i%cols,startY+Math.floor(i/cols))));
  tiles.forEach(t=>ctx.drawImage(t.im,(t.x-startX)*256,(t.y-startY)*256,256,256));
  const px=(xt-startX)*256,py=(yt-startY)*256;
- ctx.fillStyle='rgba(190,35,35,.18)';ctx.beginPath();ctx.arc(px,py,17,0,Math.PI*2);ctx.fill();
- ctx.fillStyle='#c62828';ctx.beginPath();ctx.arc(px,py,8,0,Math.PI*2);ctx.fill();ctx.strokeStyle='#fff';ctx.lineWidth=3;ctx.stroke();
- ctx.fillStyle='#fff';ctx.beginPath();ctx.arc(px,py,2.5,0,Math.PI*2);ctx.fill();
+ // PDF-only location callout: red map arrow with a clear HERE label.
+ ctx.save();ctx.translate(px,py);ctx.fillStyle='rgba(190,35,35,.18)';ctx.beginPath();ctx.arc(0,0,24,0,Math.PI*2);ctx.fill();
+ ctx.fillStyle='#c62828';ctx.strokeStyle='#fff';ctx.lineWidth=3;ctx.beginPath();ctx.moveTo(0,18);ctx.lineTo(-13,-13);ctx.lineTo(0,-7);ctx.lineTo(13,-13);ctx.closePath();ctx.fill();ctx.stroke();
+ ctx.fillStyle='#fff';ctx.font='bold 11px Arial';ctx.textAlign='center';ctx.textBaseline='middle';ctx.fillText('HERE',0,-28);ctx.restore();
  ctx.fillStyle='rgba(255,255,255,.88)';ctx.fillRect(5,h-20,250,15);ctx.fillStyle='#333';ctx.font='11px Arial';ctx.fillText('© OpenStreetMap contributors',9,h-9);
  return canvas;
 }
@@ -666,14 +693,15 @@ async function createPdf(){
   y+=60;
  }
 
- if(photos.length){
-  y=pdfNewPage(doc);y=sectionTitle(doc,`10  INSPECTION PHOTOS (${photos.length})`,y);
-  for(let i=0;i<photos.length;i++){
-   const data=await stampedPhoto(photos[i],d),props=doc.getImageProperties(data);
+ const pdfPhotos=collagePhoto?[collagePhoto]:photos;
+ if(pdfPhotos.length){
+  y=pdfNewPage(doc);y=sectionTitle(doc,`10  INSPECTION PHOTOS (${pdfPhotos.length})`,y);
+  for(let i=0;i<pdfPhotos.length;i++){
+   const data=await stampedPhoto(pdfPhotos[i],d),props=doc.getImageProperties(data);
    const maxW=PDF_LAYOUT.width-20,maxH=590,scale=Math.min(maxW/props.width,maxH/props.height);
    const w=props.width*scale,h=props.height*scale;
    if(y+22+h>PDF_LAYOUT.bottom){y=pdfNewPage(doc);}
-   doc.setFont('helvetica','bold');doc.setFontSize(9);doc.setTextColor(23,70,107);doc.text(photos[i].isCollage?'Inspection photo collage':`Photo ${i+1}`,left+7,y);y+=12;
+   doc.setFont('helvetica','bold');doc.setFontSize(9);doc.setTextColor(23,70,107);doc.text(pdfPhotos[i].isCollage?'Inspection photo collage':`Photo ${i+1}`,left+7,y);y+=12;
    doc.addImage(data,'JPEG',left+7,y,w,h,'inspection-photo-'+i,'FAST');y+=h+18;
   }
  }
@@ -702,7 +730,7 @@ document.getElementById('sharePdf').addEventListener('click',async()=>{
  b.disabled=false;b.textContent='▣ Share as PDF';
 });
 document.getElementById('shareText').addEventListener('click',async()=>{
- const d=reportData(),text=reportText(d),files=[];
+ const d=reportData(),text=reportText(d),files=[]; // Share Text always attaches original photos individually; collage is PDF-only.
  const safeName=v=>(String(v||'Unknown').normalize('NFKD').replace(/[\u0300-\u036f]/g,'').replace(/[^a-zA-Z0-9]+/g,'_').replace(/^_+|_+$/g,'')||'Unknown');
  const reportPrefix=`${d.generated.getFullYear()}-${String(d.generated.getMonth()+1).padStart(2,'0')}-${String(d.generated.getDate()).padStart(2,'0')}_IT_inspection_${safeName(d.tl)}_${safeName(d.inspector)}`;
  try{
